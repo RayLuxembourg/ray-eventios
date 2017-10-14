@@ -10,7 +10,7 @@ export const Container = styled.div`
   max-width:calc(100% - 16px);
   margin-top:15em;
   margin-bottom:5em;
-  ${Media.mobile`margin-top:5em;`}
+  ${Media.mobile`margin-top:1em;`}
 `;
 export const Row = styled.div`
   width: 100%;

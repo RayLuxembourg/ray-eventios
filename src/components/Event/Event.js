@@ -15,12 +15,7 @@ export const EventStyle = styled.div`
   cursor: pointer;
   position: relative;
   height: 280px;
-  &:hover {
-    // transform: scale(1.1);
-    // transition: transform 0.2s ease-in;
-    // z-index: 10;
-    ${Media.mobile`transform:none;z-index:1`};
-  }
+
 
   button {
     position: absolute;

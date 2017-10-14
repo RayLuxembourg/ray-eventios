@@ -27,14 +27,15 @@ const StyledLayout = styled.div`
     padding:24px;
   `};
   }
+
+
   .back-to-events {
     text-align: center;
-    position: fixed;
-    top: 0;
+    position: absolute;
+    z-index: 10;
     left: 0;
     right: 0;
     margin: 0 auto;
-    top: 30px;
     width: 140px;
     line-height: 48px;
     font-size: 16px;
@@ -63,6 +64,7 @@ const StyledLayout = styled.div`
 export default ({ component: Component, ...rest }) => {
   const user = JSON.parse(localStorage.getItem("user"));
   console.log(rest);
+  let showMenu = true;
   const backToDashboard = history => {
     if (rest.path !== "/") {
       return (
@@ -81,8 +83,8 @@ export default ({ component: Component, ...rest }) => {
           <Header>
             {backToDashboard(matchProps.history)}
             <img className={"dashboard-logo"} src={blackLogo} alt="" />
-            <UserHeader className="userHeader" user={user} />
-            <UserMenu>
+            <UserHeader onClick={()=>showMenu = !showMenu}  user={user} />
+            <UserMenu show={true}>
               <UserMenu.Item>
                 <Link to={"/profile"}>Profile</Link>
               </UserMenu.Item>

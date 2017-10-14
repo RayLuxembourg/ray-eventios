@@ -9,13 +9,17 @@ const UserMenu = styled.ul`
     padding: 16px 16px;
     list-style: none;
     min-width:162px;
+    display:none;
+    display:${(props) => props ? "list-item" : ""}
+
     &:after{
     content:"",
     width: 0;
     height: 0;
     border-style: solid;
     border-width: 0 14px 12px 14px;
-    border-color: transparent transparent #ffffff transparent;        
+    border-color: transparent transparent #ffffff transparent;
+    z-index:11;
     }
 `;
 UserMenu.Item = styled.li`
