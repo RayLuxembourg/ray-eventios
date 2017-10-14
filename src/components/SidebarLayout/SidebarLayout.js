@@ -71,7 +71,7 @@ export default ({ component: Component, ...rest }) => {
       return (
         <small className={"user"}>
           Don’t have account?
-          <Link to={"/login"}> SIGN UP</Link>
+          <Link to={"/register"}> SIGN UP</Link>
         </small>
       );
     }
