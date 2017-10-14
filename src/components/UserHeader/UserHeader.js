@@ -6,6 +6,7 @@ const UserHeaderStyle = styled.div`
 float: right;
 position: relative;
 cursor: pointer;
+padding-top: 4px;
 &:after {
   content: "";
   width: 0;

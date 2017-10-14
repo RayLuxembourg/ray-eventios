@@ -15,7 +15,7 @@ class Register extends Component {
       lastName: ""
     };
   }
-  handleSubmit = e => {
+  handleSubmit(e) {
     e.preventDefault();
     const data = new FormData(e.target);
     const user = {
@@ -25,7 +25,7 @@ class Register extends Component {
       password: data.get("password")
     };
     this.props.register(user);
-  };
+  }
   onChange = (e, type) => {
     this.setState({ [type]: e.target.value });
   };

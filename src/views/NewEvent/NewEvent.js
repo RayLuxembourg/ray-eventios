@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import Headline from "../../components/Headline/Headline";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import styled from "styled-components";
-import {postEvent} from "../EventsList/ducks";
+import { postEvent } from "../EventsList/ducks";
 const NewEventForm = styled.form`
   width: 480px;
   max-width: 100%;
@@ -49,6 +49,7 @@ class EventNew extends Component {
       capacity: parseInt(data.get("capacity"))
     };
     this.props.postEvent(event);
+    this.props.history.push("/");
   };
   onChange = (e, type) => {
     this.setState({ [type]: e.target.value });
@@ -99,10 +100,10 @@ class EventNew extends Component {
           onChange={e => this.onChange(e, "capacity")}
           required
         />
-        <Button content={"CREATE NEW EVENT"}/>
+        <Button content={"CREATE NEW EVENT"} />
       </NewEventForm>
     );
   }
 }
 
-export default connect(null,{postEvent})(EventNew);
+export default connect(null, { postEvent })(EventNew);

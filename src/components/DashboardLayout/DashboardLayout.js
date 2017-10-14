@@ -64,7 +64,6 @@ const StyledLayout = styled.div`
 export default ({ component: Component, ...rest }) => {
   const user = JSON.parse(localStorage.getItem("user"));
   console.log(rest);
-  let showMenu = true;
   const backToDashboard = history => {
     if (rest.path !== "/") {
       return (
@@ -83,8 +82,8 @@ export default ({ component: Component, ...rest }) => {
           <Header>
             {backToDashboard(matchProps.history)}
             <img className={"dashboard-logo"} src={blackLogo} alt="" />
-            <UserHeader onClick={()=>showMenu = !showMenu}  user={user} />
-            <UserMenu show={true}>
+            <UserHeader  user={user} />
+            <UserMenu>
               <UserMenu.Item>
                 <Link to={"/profile"}>Profile</Link>
               </UserMenu.Item>
