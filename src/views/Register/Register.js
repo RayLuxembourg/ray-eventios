@@ -37,7 +37,7 @@ class Register extends Component {
     }
     const { email, firstName, lastName, password, repassword } = this.state;
     return (
-      <form noValidate onSubmit={this.handleSubmit}>
+      <form noValidate onSubmit={this.handleSubmit.bind(this)}>
         <Headline
           title={"Get started absolutely free."}
           subtitle={"Enter your details below."}
