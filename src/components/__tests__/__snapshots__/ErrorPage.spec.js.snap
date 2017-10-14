@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Attendess component test renders without crashing 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ErrorPage />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": null,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <Headline
+          subtitle="Seems like Darth Vader just hits our website and drops it down.
+    Please press the refresh button and everything should be fine again."
+          title="Something went wrong."
+/>,
+        <Button
+          type="dark"
+>
+          REFRESH
+</Button>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "function",
+        "props": Object {
+          "subtitle": "Seems like Darth Vader just hits our website and drops it down.
+    Please press the refresh button and everything should be fine again.",
+          "title": "Something went wrong.",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "function",
+        "props": Object {
+          "children": "REFRESH",
+          "type": "dark",
+        },
+        "ref": null,
+        "rendered": "REFRESH",
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": null,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <Headline
+            subtitle="Seems like Darth Vader just hits our website and drops it down.
+    Please press the refresh button and everything should be fine again."
+            title="Something went wrong."
+/>,
+          <Button
+            type="dark"
+>
+            REFRESH
+</Button>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "function",
+          "props": Object {
+            "subtitle": "Seems like Darth Vader just hits our website and drops it down.
+    Please press the refresh button and everything should be fine again.",
+            "title": "Something went wrong.",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "function",
+          "props": Object {
+            "children": "REFRESH",
+            "type": "dark",
+          },
+          "ref": null,
+          "rendered": "REFRESH",
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
