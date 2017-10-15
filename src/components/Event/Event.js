@@ -119,7 +119,7 @@ const Event = ({ event, attend, unattend }) => {
         {`${event.attendees.length} of ${event.capacity}`}
       </EventStyle.Attendings>
       <Button
-        type={type.color}
+        color={type.color}
         onClick={handleButtonClick}
         size={"sm"}
         content={type.text}

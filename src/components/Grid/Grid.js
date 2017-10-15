@@ -8,7 +8,7 @@ export const Container = styled.div`
   width: 1200px;
   margin: 0 auto;
   max-width:calc(100% - 16px);
-  margin-top:15em;
+  margin-top:10em;
   margin-bottom:5em;
   ${Media.mobile`margin-top:1em;`}
 `;

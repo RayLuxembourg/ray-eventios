@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 import Spinner from "../Spinner/Spinner";
 const ButtonStyle = styled.button`
   all: unset;
-  width: ${({ size, type, theme }) => theme.button.size[size].width};
-  height: ${({ size, type, theme }) => theme.button.size[size].height};
-  background-color: ${({ size, type, theme }) => theme.color[type]};
+  width: ${({ size, color, theme }) => theme.button.size[size].width};
+  height: ${({ size, color, theme }) => theme.button.size[size].height};
+  background-color: ${({ size, color, theme }) => theme.color[color]};
   font-size: 16px;
   border: none;
   color: #fff;
@@ -17,19 +17,19 @@ const ButtonStyle = styled.button`
   letter-spacing: 1px;
   line-height: 32px;
   &:hover {
-    background-color: ${({ size, type, theme }) =>
-      theme.color.hover[type] || null};
+    background-color: ${({ size, color, theme }) =>
+      theme.color.hover[color] || null};
   }
 `;
 ButtonStyle.propTypes = {
   theme: PropTypes.object.isRequired,
-  type: PropTypes.string,
+  color: PropTypes.string,
   size: PropTypes.string
 };
 ButtonStyle.defaultProps = {
   theme: {},
   size: "lg",
-  type: "primary"
+  color: "primary"
 };
 
 const Button = (props) => {

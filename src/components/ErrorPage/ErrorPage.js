@@ -21,7 +21,7 @@ const ErrorPage = ({ error }) => {
           subtitle={`Seems like Darth Vader just hits our website and drops it down.
     Please press the refresh button and everything should be fine again.`}
         />
-        <Button type={'dark'}>REFRESH</Button>
+        <Button color={'dark'}>REFRESH</Button>
       </div>
   );
 };

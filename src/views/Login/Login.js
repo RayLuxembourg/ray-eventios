@@ -4,6 +4,7 @@ import { Button, Input, Headline } from "../../components/";
 import { login } from "./ducks";
 import { Redirect } from "react-router-dom";
 import {removeAuth} from "../../api";
+import LoginForm from "./LoginForm";
 class Login extends Component {
   constructor() {
     super();
@@ -13,19 +14,13 @@ class Login extends Component {
     removeAuth();
     localStorage.removeItem("token");
   }
-  handleSubmit = e => {
-    e.preventDefault();
-    const data = new FormData(e.target);
-    const user = { email: data.get("email"), password: data.get("password") };
-    this.props.login(user);
+  handleSubmit = loginForm => {
+    this.props.login(loginForm.toJS());
     // this.setState({ redirectToRef: true });
     //redirect on success
   };
-  onChange = (e, type) => {
-    this.setState({ [type]: e.target.value });
-  };
+
   render() {
-    const { email, password, redirectToRef } = this.state;
     const { from } = this.props.location.state || {
       from: { pathname: "/" }
     };
@@ -33,37 +28,7 @@ class Login extends Component {
     if (auth.success) {
       return <Redirect to={from} />;
     }
-    return (
-      <form noValidate onSubmit={this.handleSubmit}>
-        <Headline
-          title={"Sign in to Eventio"}
-          subtitle={"Enter your details below."}
-          errorMsg={
-            auth.error
-              ? "Oops! That email and pasword combination is not valid."
-              : null
-          }
-        />
-
-        <Input
-          error={auth.error}
-          name={"email"}
-          value={email || ""}
-          label={"Email"}
-          onChange={e => this.onChange(e, "email")}
-        />
-        <Input
-          error={auth.error}
-          name={"password"}
-          value={password}
-          label={"Password"}
-          type={"password"}
-          onChange={e => this.onChange(e, "password")}
-        />
-
-        <Button loading={auth.loading} content={"LOGIN"} />
-      </form>
-    );
+    return <LoginForm loading={auth.loading} login={(loginFrom)=>this.handleSubmit(loginFrom)} />
   }
 }
 const mapStateToProps = state => ({

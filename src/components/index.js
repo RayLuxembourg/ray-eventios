@@ -12,7 +12,6 @@ export { Container } from "./Grid/Grid";
 export { default as Attendees } from "./Attendees/Attendees";
 export { default as Quote } from "./Quote/Quote";
 export { default as SidebarLayout } from "./SidebarLayout/SidebarLayout";
-export { default as DashboardLayout } from "./DashboardLayout/DashboardLayout";
 export { default as UserHeader } from "./UserHeader/UserHeader";
 export { default as UserMenu } from "./UserMenu/UserMenu";
 export { default as ProfileInfo } from "./ProfileInfo/ProfileInfo";
