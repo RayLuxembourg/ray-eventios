@@ -7,7 +7,8 @@ import {
   eventByIdSelector,
   deleteEvent,
   attendEvent,
-  unAttendEvent
+  unAttendEvent,
+  updateEvent
 } from "./ducks";
 import EditEvent from "./EditEvent";
 import { deleteIcon } from "../../assets";
@@ -19,9 +20,12 @@ class EventDetails extends Component {
     const { attendees } = this.props;
     const user = JSON.parse(localStorage.getItem("user"));
     return ids.map(id => (
-      <Attendees.Item key={id}>
+      <Attendees.Item
+        className={id === user.id ? "user-attendee" : ""}
+        key={id}
+      >
         {id === user.id
-          ? "Me"
+          ? "You"
           : attendees[id].firstName + " " + attendees[id].lastName}
       </Attendees.Item>
     ));
@@ -31,10 +35,24 @@ class EventDetails extends Component {
     const user = JSON.parse(localStorage.getItem("user"));
     return event.owner.id === user.id;
   }
-
+  saveEdit(event) {
+    const eventValue = event.toJS();
+    const updatedEvent = {
+      title: eventValue.title,
+      description: eventValue.description,
+      capacity: parseInt(eventValue.capacity),
+      startsAt: new Date(`${eventValue.date} ${eventValue.time}`).toISOString()
+    };
+    this.props.updateEvent(this.props.match.params.id, updatedEvent);
+  }
   evenInfo(event) {
     if (this.isOwner()) {
-      return <EditEvent event={event} />;
+      return (
+        <EditEvent
+          saveEdit={eventValue => this.saveEdit(eventValue)}
+          event={event}
+        />
+      );
     }
     return (
       <Event
@@ -96,5 +114,6 @@ export default connect(mapStateToProps, {
   getEventsById,
   deleteEvent,
   attendEvent,
-  unAttendEvent
+  unAttendEvent,
+  updateEvent
 })(EventDetails);

@@ -54,27 +54,33 @@ const LabelStyle = styled.label`
 `;
 const ErrorAlert = styled.small`
   font-size: 18px;
-  margin-top: 10px;
+  margin-top: 8px;
   color: #ff4081;
   letter-spacing: 0;
   line-height: 24px;
   // display: none;
   display: block;
   transition: opacity ease-out 0.2s;
-  opacity:0;
-  float:left;
+  opacity: 0;
+  float: left;
   &.show {
     display: block;
-    opacity:1;
+    opacity: 1;
     transition: opacity ease-in 0.2s;
   }
 `;
 
 const Input = props => {
   const { touched, error } = props.meta;
-  console.log(props);
+  console.log(props.type);
   return (
-    <InputLayout className={props.input.value ? "active" : null}>
+    <InputLayout
+      className={
+        props.input.value || props.type === "date" || props.type === "time"
+          ? "active"
+          : null
+      }
+    >
       <LabelStyle>{props.label}</LabelStyle>
       <InputStyle
         {...props.input}
@@ -84,7 +90,7 @@ const Input = props => {
       {
         <ErrorAlert
           className={touched && error ? "show" : ""}
-        >{`This field is ${error}`}</ErrorAlert>
+        >{`${error}`}</ErrorAlert>
       }
     </InputLayout>
   );

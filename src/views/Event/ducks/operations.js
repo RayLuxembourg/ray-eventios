@@ -8,6 +8,9 @@ import {
   DELETE_EVENT,
   DELETE_EVENT_SUCCES,
   DELETE_EVENT_FAIL,
+  UPDATE_EVENT,
+  UPDATE_EVENT_SUCCES,
+  UPDATE_EVENT_FAIL,
   ATTEND_EVENT,
   ATTEND_EVENT_SUCCESS,
   ATTEND_EVENT_FAIL,
@@ -33,6 +36,15 @@ function* deleteEventsById(action) {
     yield put({ type: DELETE_EVENT_FAIL, payload: e });
   }
 }
+function* updateEventsById(action) {
+  try {
+    const { data } = yield call(EventsApi.updateEvent, action.payload.id,action.payload.data);
+
+    yield put({ type: UPDATE_EVENT_SUCCES});
+  } catch (e) {
+    yield put({ type: UPDATE_EVENT_FAIL, payload: e });
+  }
+}
 function* attendEvent(action) {
   try {
     const { data } = yield call(EventsApi.attendEvent, action.payload);
@@ -56,6 +68,9 @@ function* getEventsByIdSaga() {
 function* deleteEventsByIdSaga() {
   yield takeLatest(DELETE_EVENT, deleteEventsById);
 }
+function* updateEventsByIdSaga() {
+  yield takeLatest(UPDATE_EVENT, updateEventsById);
+}
 function* attendEventByIdSaga() {
   yield takeLatest(ATTEND_EVENT, attendEvent);
 }
@@ -67,5 +82,6 @@ export {
   getEventsByIdSaga,
   attendEventByIdSaga,
   unAttendEventByIdSaga,
-  deleteEventsByIdSaga
+  deleteEventsByIdSaga,
+  updateEventsByIdSaga
 };

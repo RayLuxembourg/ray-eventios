@@ -1,5 +1,5 @@
 import { createSelector } from "reselect";
-
+import format from "date-fns/format";
 const selectEventById = state =>
   state
     .get("eventById")
@@ -18,3 +18,14 @@ export const eventByIdSelector = createSelector(
   selectEventById,
   event => event
 );
+export const eventByIdEditSelector = createSelector(
+  selectEventById,
+  event => ({
+    title:event.title,
+    description:event.description,
+    capacity:event.capacity,
+    date:format(event.startsAt,"YYYY-MM-DD"),
+    time:format(event.startsAt,"hh:mm")
+  })
+);
+

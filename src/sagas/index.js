@@ -12,7 +12,8 @@ import {
   getEventsByIdSaga,
   attendEventByIdSaga,
   unAttendEventByIdSaga,
-  deleteEventsByIdSaga
+  deleteEventsByIdSaga,
+  updateEventsByIdSaga
 } from "../views/Event/ducks";
 
 export default function* rootSaga() {
@@ -25,7 +26,7 @@ export default function* rootSaga() {
     fork(unAttendEventByIdSaga),
     fork(deleteEventsByIdSaga),
     fork(postEventSaga),
-    // fork(updateEventSaga),
+    fork(updateEventsByIdSaga),
     fork(attendEventSaga),
     fork(unAttendEventSaga)
   ]);

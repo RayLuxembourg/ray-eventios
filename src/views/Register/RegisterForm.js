@@ -5,36 +5,31 @@ import { Link } from "react-router-dom";
 
 const validate = form => {
     const values = form.toJS();
-    console.log(form.toJS());
     const errors = {};
     if (!values.firstName) {
-      errors.firstName = "Required";
+      errors.firstName = "First name  is required";
     }
     if (!values.lastName) {
-      errors.lastName = "Required";
+      errors.lastName = "Last name  is required";
     }
     if (!values.email) {
-      errors.email = "Required";
+      errors.email = "Email  is required";
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
       errors.email = "Invalid email address";
     }
     if (!values.password) {
-      errors.password = "Required";
+      errors.password = "Password  is required";
     }
     if (!values.repassword) {
-      errors.repassword = "Required";
-      console.log("passwords",values.password,values.repassword);
+      errors.repassword = "Confirm your password";
     } else if (values.password !== values.repassword) {
-      errors.repassword = "Doesnt not much password";
+      errors.repassword = "Confirmation doesn't match";
     }
-    console.log("validating", errors);
     return errors;
   };
 const RegisterForm = (props) => {
-    const submit = (values) => {
-        console.log(values)
-      }
-    const { handleSubmit, pristine, reset, submitting,register,loading } = props    
+
+    const { handleSubmit, submitting,register,loading } = props    
     return (
         <form  onSubmit={handleSubmit(register)}>
           <Headline

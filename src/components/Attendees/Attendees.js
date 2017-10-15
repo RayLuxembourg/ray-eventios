@@ -35,6 +35,11 @@ Attendees.Item = styled.span`
   &:last-of-type {
     margin-right: 0;
   }
+  &.user-attendee{
+    background:#fff;
+    border:2px solid #949ea8;
+    padding:12px;
+  }
 `;
 
 export default Attendees;

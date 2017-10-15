@@ -1,18 +1,29 @@
 import React from "react";
-import { Input, Button } from "../../components";
-import styled from "styled-components";
 import { reduxForm, Field } from "redux-form/immutable";
+import { Headline, Input, Button } from "../../components";
+import styled from "styled-components";
 import isFuture from "date-fns/is_future";
-import { connect } from "react-redux";
-import { eventByIdEditSelector } from "./ducks";
-const EditForm = styled.form`
-  background: #ffffff;
+const StyledForm = styled.form`
+  width: 480px;
+  max-width: 100%;
+  padding: 40px 32px;
+  background-color: #fff;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.11);
   border-radius: 2px;
-  padding: 32px;
-  width: 100%;
-`;
 
+  margin: 0 auto;
+
+  h1,
+  p {
+    text-align: center;
+  }
+  button {
+    margin: 0 auto;
+    float: none;
+    display: inherit;
+    margin-top: 20px;
+  }
+`;
 const validate = form => {
   const values = form.toJS();
   console.log(form.toJS());
@@ -36,18 +47,11 @@ const validate = form => {
   }
   return errors;
 };
-let EditEvent = props => {
-  const {
-    handleSubmit,
-    submitting,
-    newEvent,
-    loading,
-    event,
-    saveEdit
-  } = props;
-  console.log(props);
+const NewEventForm = props => {
+  const { handleSubmit, submitting, newEvent, loading } = props;
   return (
-    <EditForm onSubmit={handleSubmit(saveEdit)}>
+    <StyledForm onSubmit={handleSubmit(newEvent)}>
+      <Headline title={"Create new event"} subtitle={"Enter details below"} />
       <Field name="title" label={"Title"} component={Input} type="text" />
       <Field
         name="description"
@@ -69,15 +73,11 @@ let EditEvent = props => {
         loading={loading}
         disabled={submitting}
       />
-    </EditForm>
+    </StyledForm>
   );
 };
 
-EditEvent = reduxForm({
-  form: "editEventForm",
+export default reduxForm({
+  form: "newEventForm",
   validate
-})(EditEvent);
-EditEvent = connect(state => ({
-  initialValues: eventByIdEditSelector(state)
-}))(EditEvent);
-export default EditEvent;
+})(NewEventForm);

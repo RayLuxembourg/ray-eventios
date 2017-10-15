@@ -4,14 +4,16 @@ export {
   getEventsByIdSaga,
   attendEventByIdSaga,
   unAttendEventByIdSaga,
-  deleteEventsByIdSaga
+  deleteEventsByIdSaga,
+  updateEventsByIdSaga
 } from "./operations";
 export { default as eventTypes } from "./types";
 export {
   getEventsById,
   attendEvent,
   unAttendEvent,
-  deleteEvent
+  deleteEvent,
+  updateEvent
 } from "./actions";
-export { attendeesSelector, eventByIdSelector } from "./selectors";
+export { attendeesSelector, eventByIdSelector,eventByIdEditSelector } from "./selectors";
 export default reducer;
