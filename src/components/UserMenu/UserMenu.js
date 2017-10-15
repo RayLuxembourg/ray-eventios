@@ -10,7 +10,7 @@ const UserMenu = styled.ul`
     list-style: none;
     min-width:162px;
     display:none;
-    display:${(props) => props ? "list-item" : ""}
+   z-index:10;
 
     &:after{
     content:"",

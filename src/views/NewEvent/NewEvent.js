@@ -4,7 +4,7 @@ import Headline from "../../components/Headline/Headline";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import styled from "styled-components";
-import { postEvent } from "../EventsList/ducks";
+import { postEvent } from "../../containers/EventsList/ducks";
 const NewEventForm = styled.form`
   width: 480px;
   max-width: 100%;

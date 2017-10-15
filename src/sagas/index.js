@@ -7,7 +7,7 @@ import {
   unAttendEventSaga,
   getEventsSaga,
   postEventSaga
-} from "../views/EventsList/ducks";
+} from "../containers/EventsList/ducks";
 import {
   getEventsByIdSaga,
   attendEventByIdSaga,

@@ -3,15 +3,16 @@ import { Route, Switch } from "react-router-dom";
 import {Dashboard,Login,Register,Event as EventView,Profile,NewEvent} from "./views"
 import {Restricted} from "./utils";
 import {SidebarLayout,DashboardLayout} from "./components";
+import {Layout} from "./containers"
 export default () => {
   return (
     <Switch>
-      <DashboardLayout exact path="/" component={Restricted(Dashboard)} />
+      <Layout  exact path="/" component={Restricted(Dashboard)} />
       <SidebarLayout  path="/login" component={Login} />
       <SidebarLayout path="/register" component={Register} />
-      <DashboardLayout  path="/event/:id" component={Restricted(EventView)} />
-      <DashboardLayout  path="/profile" component={Restricted(Profile)} />
-      <DashboardLayout exact path="/new" component={Restricted(NewEvent)} />
+      <Layout   path="/event/:id" component={Restricted(EventView)} />
+      <Layout   path="/profile" component={Restricted(Profile)} />
+      <Layout  exact path="/new" component={Restricted(NewEvent)} />
     </Switch>
   );
 };

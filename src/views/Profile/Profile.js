@@ -6,8 +6,8 @@ import {
   ownerEventsSelector,
   allEventsSelector
 } from "./ducks";
-import EventList from "../EventsList/EventsList";
-import {getEvents} from "../EventsList/ducks";
+import {EventsList} from "../../containers";
+import {getEvents} from "../../containers/EventsList/ducks";
 class Profile extends Component {
   componentDidMount() {
     this.props.getEvents();
@@ -36,7 +36,7 @@ class Profile extends Component {
           <ProfileInfo.Sub>{user.email}</ProfileInfo.Sub>
         </ProfileInfo>
         <h3>My Events</h3>
-        <EventList
+        <EventsList
           {...this.props}
           events={events}
           ids={[...ownerEvents, ...attendingEvents]}

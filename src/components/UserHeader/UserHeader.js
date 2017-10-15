@@ -73,12 +73,12 @@ padding-top: 4px;
 }
 
 `;
-const UserHeader = ({user}) => {
+const UserHeader = ({user,onClick}) => {
   if(!user){
     return <div></div>
   }
   return (
-    <UserHeaderStyle>
+    <UserHeaderStyle onClick={onClick}>
       <small className={"user"}>
         {user.firstName} {user.lastName}
       </small>

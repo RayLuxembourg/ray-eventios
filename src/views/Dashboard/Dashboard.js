@@ -6,8 +6,8 @@ import {
   pastEventsSelector,
   allEventsSelector,
   allEventsIdSelector
-} from "../EventsList/ducks";
-import EventsList from "../EventsList/EventsList";
+} from "../../containers/EventsList/ducks";
+import {EventsList} from "../../containers";
 import { Col, EventFilters } from "../../components";
 class Dashboard extends Component {
   get filter() {

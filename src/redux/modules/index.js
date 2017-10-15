@@ -1,5 +1,5 @@
 import { combineReducers } from "redux-immutable";
-import events from "../../views/EventsList/ducks"
+import events from "../../containers/EventsList/ducks"
 import auth from "../../views/Login/ducks"
 import register from "../../views/Register/ducks"
 import eventById from "../../views/Event/ducks"
