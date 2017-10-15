@@ -44,6 +44,7 @@ class EventDetails extends Component {
       startsAt: new Date(`${eventValue.date} ${eventValue.time}`).toISOString()
     };
     this.props.updateEvent(this.props.match.params.id, updatedEvent);
+    this.props.history.push("/");    
   }
   evenInfo(event) {
     if (this.isOwner()) {
