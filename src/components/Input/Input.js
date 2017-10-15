@@ -90,7 +90,7 @@ const Input = props => {
       {
         <ErrorAlert
           className={touched && error ? "show" : ""}
-        >{`${error}`}</ErrorAlert>
+        >{error?error:""}</ErrorAlert>
       }
     </InputLayout>
   );

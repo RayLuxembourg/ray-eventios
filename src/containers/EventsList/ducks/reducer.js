@@ -3,6 +3,9 @@ import {
   GET_EVENTS,
   GET_EVENTS_SUCCES,
   GET_EVENTS_FAIL,
+  POST_EVENTS,
+  POST_EVENTS_SUCCES,
+  POST_EVENTS_FAIL,
   ATTEND_EVENT,
   ATTEND_EVENT_SUCCESS,
   UNATTEND_EVENT,
@@ -30,15 +33,19 @@ export default function reducer(state = initialState, action = {}) {
       });
     case GET_EVENTS_FAIL:
       return state.merge({ error: true });
+    case POST_EVENTS_SUCCES:
+      return state.merge({
+        all: state.get("all").set([action.payload.result.id], action.payload.result)
+      });
     case ATTEND_EVENT:
       return state.merge(onStart);
-
     case ATTEND_EVENT_SUCCESS:
       return state.merge({
         all: state
           .get("all")
           .set([action.payload.result.id], action.payload.result)
       });
+
     case UNATTEND_EVENT:
       return state.merge(onStart);
 

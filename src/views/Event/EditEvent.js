@@ -65,7 +65,7 @@ let EditEvent = props => {
       />
       <Button
         type={"submit"}
-        content={"CREATE NEW EVENT"}
+        content={"UPDATE EVENT"}
         loading={loading}
         disabled={submitting}
       />
