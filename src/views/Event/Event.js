@@ -8,8 +8,8 @@ import {
   deleteEvent,
   attendEvent,
   unAttendEvent,
-  updateEvent
 } from "./ducks";
+import {updateEvent} from "../../containers/EventsList/ducks"
 import EditEvent from "./EditEvent";
 import { deleteIcon } from "../../assets";
 class EventDetails extends Component {

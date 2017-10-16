@@ -8,6 +8,9 @@ import {
   POST_EVENTS,
   POST_EVENTS_SUCCES,
   POST_EVENTS_FAIL,
+  UPDATE_EVENT,
+  UPDATE_EVENT_SUCCES,
+  UPDATE_EVENT_FAIL,
   ATTEND_EVENT,
   ATTEND_EVENT_SUCCESS,
   ATTEND_EVENT_FAIL,
@@ -33,6 +36,15 @@ function* postEvent(action) {
     yield put({ type: POST_EVENTS_FAIL });
   }
 }
+function* updateEvent(action) {
+  try {
+    const { data } = yield call(EventsApi.updateEvent, action.payload.id,action.payload.data);
+
+    yield put({ type: UPDATE_EVENT_SUCCES,payload:normlizeEvent(data)});
+  } catch (e) {
+    yield put({ type: UPDATE_EVENT_FAIL, payload: e });
+  }
+}
 function* attendEvent(action) {
   try {
     const { data } = yield call(EventsApi.attendEvent, action.payload);
@@ -52,6 +64,9 @@ function* unAttendEvent(action) {
  function* getEventsSaga() {
   yield takeLatest(GET_EVENTS, getEvents);
 }
+function* updateEventSaga() {
+  yield takeLatest(UPDATE_EVENT, updateEvent);
+}
 function* postEventSaga() {
   yield takeLatest(POST_EVENTS, postEvent);
 }
@@ -64,6 +79,7 @@ function* unAttendEventSaga() {
 
 export {
   getEventsSaga,
+  updateEventSaga,
   attendEventSaga,
   unAttendEventSaga,
   postEventSaga
