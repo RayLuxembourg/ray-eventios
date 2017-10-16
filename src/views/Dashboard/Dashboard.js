@@ -7,8 +7,9 @@ import {
   allEventsSelector,
   allEventsIdSelector
 } from "../../containers/EventsList/ducks";
-import {EventsList} from "../../containers";
-import { Col, EventFilters } from "../../components";
+import { EventsList } from "../../containers";
+import { Col, EventFilters, GridOptions } from "../../components";
+import { gridIcon, listIcon } from "../../assets";
 class Dashboard extends Component {
   get filter() {
     return this.state.filter;
@@ -23,32 +24,45 @@ class Dashboard extends Component {
   componentDidMount() {
     this.props.getEvents();
   }
-
+  selectedFilter(filter) {
+    return this.state.filter === filter ? "selected" : "";
+  }
   render() {
     const { events } = this.props;
     const { state } = this;
     console.log(events);
     return (
-      <div style={{minHeight:"654px"}}>
-        <Col desktop={12} style={{padding:"7.5px"}}>
-          <EventFilters
-            onClick={() => (this.filter = "all")}
-            className={state.filter === "all" ? "selected" : null}
-          >
-            ALL EVENTS
+      <div style={{ minHeight: "654px" }}>
+        <Col desktop={12} style={{ padding: "7.5px" }}>
+          <EventFilters>
+            <EventFilters.Item
+              className={this.selectedFilter("all")}
+              onClick={() => (this.filter = "all")}
+            >
+              ALL EVENTS
+            </EventFilters.Item>
+            <EventFilters.Item
+              className={this.selectedFilter("future")}
+              onClick={() => (this.filter = "future")}
+            >
+              FUTURE EVENTS
+            </EventFilters.Item>
+            <EventFilters.Item
+              className={this.selectedFilter("past")}
+              onClick={() => (this.filter = "past")}
+            >
+              PAST EVENTS
+            </EventFilters.Item>
           </EventFilters>
-          <EventFilters
-            onClick={() => (this.filter = "future")}
-            className={state.filter === "future" ? "selected" : null}
-          >
-            FUTURE EVENTS
-          </EventFilters>
-          <EventFilters
-            onClick={() => (this.filter = "past")}
-            className={state.filter === "past" ? "selected" : null}
-          >
-            PAST EVENTS
-          </EventFilters>
+
+          <GridOptions>
+            <GridOptions.Item className={"selected"}>
+              <img src={gridIcon} alt="" />
+            </GridOptions.Item>
+            <GridOptions.Item>
+              <img src={listIcon} alt="" />
+            </GridOptions.Item>
+          </GridOptions>
         </Col>
         <EventsList
           {...this.props}

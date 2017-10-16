@@ -21,6 +21,7 @@ export const EventStyle = styled.div`
     position: absolute;
     right: 32px;
     bottom: 32px;
+    z-index:1;
   }
   img {
     vertical-align: sub;

@@ -25,7 +25,7 @@ class Profile extends Component {
     const user = JSON.parse(localStorage.getItem("user"));
     const { attendingEvents, ownerEvents, events } = this.props;
     return (
-      <div>
+      <div style={{padding:"7.5px"}}>
         <ProfileInfo>
           <ProfileInfo.Profile>
             {user.firstName[0]} {user.lastName[0]}

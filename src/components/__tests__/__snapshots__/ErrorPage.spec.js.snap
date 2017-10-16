@@ -24,7 +24,7 @@ ShallowWrapper {
           title="Something went wrong."
 />,
         <Button
-          type="dark"
+          color="dark"
 >
           REFRESH
 </Button>,
@@ -51,7 +51,7 @@ ShallowWrapper {
         "nodeType": "function",
         "props": Object {
           "children": "REFRESH",
-          "type": "dark",
+          "color": "dark",
         },
         "ref": null,
         "rendered": "REFRESH",
@@ -73,7 +73,7 @@ ShallowWrapper {
             title="Something went wrong."
 />,
           <Button
-            type="dark"
+            color="dark"
 >
             REFRESH
 </Button>,
@@ -100,7 +100,7 @@ ShallowWrapper {
           "nodeType": "function",
           "props": Object {
             "children": "REFRESH",
-            "type": "dark",
+            "color": "dark",
           },
           "ref": null,
           "rendered": "REFRESH",

@@ -16,3 +16,4 @@ export { default as UserHeader } from "./UserHeader/UserHeader";
 export { default as UserMenu } from "./UserMenu/UserMenu";
 export { default as ProfileInfo } from "./ProfileInfo/ProfileInfo";
 export { default as EventFilters } from "./EventFilters/EventFilters";
+export { default as GridOptions } from "./GridOptions/GridOptions";

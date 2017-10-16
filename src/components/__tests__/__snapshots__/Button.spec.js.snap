@@ -18,9 +18,9 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": undefined,
+      "color": "primary",
       "size": "lg",
       "theme": Object {},
-      "type": "primary",
     },
     "ref": null,
     "rendered": null,
@@ -33,9 +33,9 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": undefined,
+        "color": "primary",
         "size": "lg",
         "theme": Object {},
-        "type": "primary",
       },
       "ref": null,
       "rendered": null,

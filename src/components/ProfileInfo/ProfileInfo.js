@@ -9,7 +9,7 @@ const ProfileInfo = styled.div`
   text-align: center;
   padding-top: 83px;
   position:relative;
-  ${Media.mobile`margin-top:10em`}
+  ${Media.mobile`margin-top:5em`}
 `;
 ProfileInfo.Profile = styled.div`
   color: #949ea8;
