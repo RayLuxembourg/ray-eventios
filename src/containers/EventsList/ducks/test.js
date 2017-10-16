@@ -3,6 +3,7 @@ import { getEvents, createEvent, attendEvent, unAttendEvent } from "./actions";
 import * as reducer from "./reducer";
 import { Map, List } from "immutable";
 import mockdata from "../../../mock/events";
+import {normlizeEventList} from "./schema";
 describe("actions", () => {
   it("should create an action to get events", () => {
     const expectedAction = {
@@ -36,28 +37,28 @@ describe("actions", () => {
   });
 });
 describe("EventsList reducer", () => {
+  const data = normlizeEventList(mockdata);
   const events = {
     type: types.GET_EVENTS_SUCCESS,
-    payload: mockdata
+    payload: data
   };
   it("should return the initial state", () => {
     expect(reducer.default(List(), List())).toEqual(List());
   });
   it("should return the GET_EVENTS_SUCCESS all events", () => {
-    expect(reducer.default(Map(), events).get("all")).toEqual(
-      Map(mockdata.entities.events)
+    expect(reducer.default(undefined, events).get("all")).toEqual(
+      Map(data.entities.events)
     );
   });
   it("should return the GET_EVENTS_SUCCESS all ids", () => {
-    expect(reducer.default(Map(), events).get("ids")).toEqual(
-      List(mockdata.result)
+    expect(reducer.default(undefined, events).get("ids")).toEqual(
+      List(data.result)
     );
   });
+  it("should return the GET_EVENTS_SUCCESS all attendees", () => {
+    expect(reducer.default(undefined, events).get("attendees")).toEqual(
+      Map(data.entities.attendees)
+    );
+  });
+  
 });
-// describe('EventList reducer', () => {
-
-//   it('should handle GET_EVENTS');
-//   it('should handle UPDATE_EVENT');
-//   it('should handle ATTEND_EVENT');
-//   it('should handle UNATTEND_EVENT');
-// });
