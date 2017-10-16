@@ -6,7 +6,7 @@ import {
   attendEventSaga,
   unAttendEventSaga,
   getEventsSaga,
-  postEventSaga,
+  createEventSaga,
   updateEventSaga
 } from "../containers/EventsList/ducks";
 import {
@@ -14,7 +14,6 @@ import {
   attendEventByIdSaga,
   unAttendEventByIdSaga,
   deleteEventsByIdSaga,
-  updateEventsByIdSaga
 } from "../views/Event/ducks";
 
 export default function* rootSaga() {
@@ -26,7 +25,7 @@ export default function* rootSaga() {
     fork(attendEventByIdSaga),
     fork(unAttendEventByIdSaga),
     fork(deleteEventsByIdSaga),
-    fork(postEventSaga),
+    fork(createEventSaga),
     fork(updateEventSaga),
     fork(attendEventSaga),
     fork(unAttendEventSaga)

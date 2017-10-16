@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { postEvent } from "../../containers/EventsList/ducks";
+import { createEvent } from "../../containers/EventsList/ducks";
 import NewEventForm from "./NewEventForm";
-import format  from "date-fns/format";
 
 class EventNew extends Component {
   // 2018-12-08T10:46:33.901Z
@@ -16,7 +15,7 @@ class EventNew extends Component {
       capacity:parseInt(eventValue.capacity),
       startsAt:new Date(`${eventValue.date} ${eventValue.time}`).toISOString()
     }
-    this.props.postEvent(newEvent);
+    this.props.createEvent(newEvent);
     this.props.history.push("/");
   };
 
@@ -25,4 +24,4 @@ class EventNew extends Component {
   }
 }
 
-export default connect(null, { postEvent })(EventNew);
+export default connect(null, { createEvent })(EventNew);

@@ -3,13 +3,13 @@ import { normlizeEventList, normlizeEvent } from "./schema";
 import { EventsApi } from "../../../api";
 import {
   GET_EVENTS,
-  GET_EVENTS_SUCCES,
+  GET_EVENTS_SUCCESS,
   GET_EVENTS_FAIL,
-  POST_EVENTS,
-  POST_EVENTS_SUCCES,
-  POST_EVENTS_FAIL,
+  CREATE_EVENT,
+  CREATE_EVENT_SUCCESS,
+  CREATE_EVENT_FAIL,
   UPDATE_EVENT,
-  UPDATE_EVENT_SUCCES,
+  UPDATE_EVENT_SUCCESS,
   UPDATE_EVENT_FAIL,
   ATTEND_EVENT,
   ATTEND_EVENT_SUCCESS,
@@ -20,27 +20,25 @@ import {
 } from "./types";
 function* getEvents(action) {
   try {
-    console.log("GET EVENTS");
     const { data } = yield call(EventsApi.getEvents);
-
-    yield put({ type: GET_EVENTS_SUCCES, payload: normlizeEventList(data) });
+    yield put({ type: GET_EVENTS_SUCCESS, payload: normlizeEventList(data) });
   } catch (e) {
     yield put({ type: GET_EVENTS_FAIL, payload: e });
   }
 }
-function* postEvent(action) {
+function* createEvent(action) {
   try {
     const { data } = yield call(EventsApi.postNewEvent, action.payload);
-    yield put({ type: POST_EVENTS_SUCCES, payload: normlizeEvent(data) });
+    yield put({ type: CREATE_EVENT_SUCCESS, payload: normlizeEvent(data) });
   } catch (e) {
-    yield put({ type: POST_EVENTS_FAIL });
+    yield put({ type: CREATE_EVENT_FAIL });
   }
 }
 function* updateEvent(action) {
   try {
     const { data } = yield call(EventsApi.updateEvent, action.payload.id,action.payload.data);
 
-    yield put({ type: UPDATE_EVENT_SUCCES,payload:normlizeEvent(data)});
+    yield put({ type: UPDATE_EVENT_SUCCESS,payload:normlizeEvent(data)});
   } catch (e) {
     yield put({ type: UPDATE_EVENT_FAIL, payload: e });
   }
@@ -67,8 +65,8 @@ function* unAttendEvent(action) {
 function* updateEventSaga() {
   yield takeLatest(UPDATE_EVENT, updateEvent);
 }
-function* postEventSaga() {
-  yield takeLatest(POST_EVENTS, postEvent);
+function* createEventSaga() {
+  yield takeLatest(CREATE_EVENT, createEvent);
 }
 function* attendEventSaga() {
   yield takeLatest(ATTEND_EVENT, attendEvent);
@@ -82,5 +80,5 @@ export {
   updateEventSaga,
   attendEventSaga,
   unAttendEventSaga,
-  postEventSaga
+  createEventSaga
 };

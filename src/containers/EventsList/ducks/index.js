@@ -4,11 +4,11 @@ export {
   attendEventSaga,
   unAttendEventSaga,
   getEventsSaga,
-  postEventSaga,
+  createEventSaga,
   updateEventSaga
 } from "./operations";
 export { default as dashboardTypes } from "./types";
-export { getEvents, attendEvent, unAttendEvent,postEvent,updateEvent } from "./actions";
+export { getEvents, attendEvent, unAttendEvent,createEvent,updateEvent } from "./actions";
 export {
   futureEventsSelector,
   pastEventsSelector,

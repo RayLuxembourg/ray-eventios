@@ -3,11 +3,9 @@ import { combineReducers } from "redux-immutable";
 
 import {
   GET_EVENTS,
-  GET_EVENTS_SUCCES,
+  GET_EVENTS_SUCCESS,
   GET_EVENTS_FAIL,
-  POST_EVENTS,
-  POST_EVENTS_SUCCES,
-  POST_EVENTS_FAIL,
+  CREATE_EVENT_SUCCESS,
   REMOVE_EVENT,
   REMOVE_EVENT_SUCCESS,
   REMOVE_EVENT_FAIL,
@@ -25,7 +23,7 @@ const loading = (state = false, action) => {
 };
 const all = (state = Map(), action) => {
   switch (action.type) {
-    case GET_EVENTS_SUCCES:
+    case GET_EVENTS_SUCCESS:
       return Map(action.payload.entities.events);
     case ATTEND_EVENT_SUCCESS:
       return state.set([action.payload.result.id], action.payload.result);
@@ -33,6 +31,9 @@ const all = (state = Map(), action) => {
       return state.set([action.payload.result.id], action.payload.result);
     case REMOVE_EVENT_SUCCESS:
       return state.delete(action.payload.id);
+    case CREATE_EVENT_SUCCESS:
+      console.log(state.set([action.payload.result.id], action.payload.result));
+      return state.set([action.payload.result.id], action.payload.result);
 
     default:
       return state;
@@ -40,20 +41,20 @@ const all = (state = Map(), action) => {
 };
 const attendees = (state = Map(), action) => {
   switch (action.type) {
-    case GET_EVENTS_SUCCES:
+    case GET_EVENTS_SUCCESS:
       return Map(action.payload.entities.attendees);
-
     default:
       return state;
   }
 };
 const ids = (state = List(), action) => {
   switch (action.type) {
-    case GET_EVENTS_SUCCES:
+    case GET_EVENTS_SUCCESS:
       return List(action.payload.result);
     case REMOVE_EVENT_SUCCESS:
       return state.delete(state.indexOf(action.payload.id));
-
+    case CREATE_EVENT_SUCCESS:
+      return state.push(action.payload.result.id);
     default:
       return state;
   }
