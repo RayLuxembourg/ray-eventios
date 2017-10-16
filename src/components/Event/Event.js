@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Button from "../Button/Button";
 import format from "date-fns/format";
 import { userIcon } from "../../assets";
-import { Media } from "../../utils";
 export const EventStyle = styled.div`
   background: #ffffff;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.11);
