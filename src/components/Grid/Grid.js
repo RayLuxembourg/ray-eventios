@@ -7,12 +7,12 @@ const column = columns => {
 export const Container = styled.div`
   width: 1200px;
   margin: 0 auto;
-  max-width:calc(100% - 16px);
-  display:flex;
+  max-width: calc(100% - 16px);
+  display: flex;
   flex-direction: column;
   min-height: 100vh;
   justify-content: center;
-  ${Media.mobile`padding-top: 5em;`}
+  ${Media.mobile`padding: 5em 0;`};
 `;
 export const Row = styled.div`
   width: 100%;
@@ -26,7 +26,7 @@ export const Row = styled.div`
 `;
 export const Col = styled.div`
   width: ${({ desktop }) => column(desktop)};
-  float:left;
+  float: left;
   ${Media.mobile`
     width: ${({ mobile }) => column(mobile)};
   `};

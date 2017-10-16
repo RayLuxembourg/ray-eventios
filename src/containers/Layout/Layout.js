@@ -72,7 +72,7 @@ class Layout extends React.Component {
   }
   backToDashboard = history => {
     console.log(history);
-    if (history.location.pathname !== "/") {
+    if (history.location.pathname !== "/" && history.location.pathname !== "profile" ) {
       return (
         <div onClick={() => history.push("/")} className="back-to-events">
           <img src={backArrowIcon} alt="" />
@@ -99,7 +99,7 @@ class Layout extends React.Component {
               {this.backToDashboard(matchProps.history)}
               <img className={"dashboard-logo"} src={blackLogo} alt="" />
               <UserHeader user={user} onClick={this.toggleMenu.bind(this)} />
-              <UserMenu className={this.showMenu()}>
+              <UserMenu onClick={this.toggleMenu.bind(this)} className={this.showMenu()}>
                 <UserMenu.Item>
                   <Link to={"/profile"}>Profile</Link>
                 </UserMenu.Item>

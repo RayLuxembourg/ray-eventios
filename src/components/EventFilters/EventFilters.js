@@ -5,7 +5,7 @@ color: #a9aeb4;
 letter-spacing: 1px;
 line-height: 24px;
 margin-right: 28px;
-margin-bottom: 40px;
+margin-bottom: 20px;
 display: inline-block;
 cursor: pointer;
 &:last-of-type {

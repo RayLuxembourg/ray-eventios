@@ -30,7 +30,7 @@ class Dashboard extends Component {
     console.log(events);
     return (
       <div style={{minHeight:"654px"}}>
-        <Col desktop={12}>
+        <Col desktop={12} style={{padding:"7.5px"}}>
           <EventFilters
             onClick={() => (this.filter = "all")}
             className={state.filter === "all" ? "selected" : null}
