@@ -6,6 +6,10 @@ export const POST_EVENTS = "Eventio/events/POST_EVENTS";
 export const POST_EVENTS_SUCCES = "Eventio/events/POST_EVENTS_SUCCES";
 export const POST_EVENTS_FAIL = "Eventio/events/POST_EVENTS_FAIL";
 
+export const REMOVE_EVENT = "Eventio/events/REMOVE_EVENT";
+export const REMOVE_EVENT_SUCCESS = "Eventio/events/REMOVE_EVENT_SUCCESS";
+export const REMOVE_EVENT_FAIL = "Eventio/events/REMOVE_EVENT_FAIL";
+
 
 export const ATTEND_EVENT = "Eventio/events/ATTEND_EVENT";
 export const ATTEND_EVENT_SUCCESS = "Eventio/events/ATTEND_EVENT_SUCCESS";

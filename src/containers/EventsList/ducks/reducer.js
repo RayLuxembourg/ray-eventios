@@ -1,4 +1,6 @@
 import { Map, List } from "immutable";
+import { combineReducers } from "redux-immutable";
+
 import {
   GET_EVENTS,
   GET_EVENTS_SUCCES,
@@ -6,56 +8,60 @@ import {
   POST_EVENTS,
   POST_EVENTS_SUCCES,
   POST_EVENTS_FAIL,
+  REMOVE_EVENT,
+  REMOVE_EVENT_SUCCESS,
+  REMOVE_EVENT_FAIL,
   ATTEND_EVENT,
   ATTEND_EVENT_SUCCESS,
   UNATTEND_EVENT,
   UNATTEND_EVENT_SUCCESS
 } from "./types";
 
-const initialState = Map({
-  loading: false,
-  error: null,
-  ids: List(),
-  all: Map(),
-  attendees: Map()
-});
-const onStart = { loading: true, error: null };
-export default function reducer(state = initialState, action = {}) {
+const loading = (state = false, action) => {
   switch (action.type) {
-    case GET_EVENTS:
-      return state.merge(onStart);
-    case GET_EVENTS_SUCCES:
-      return state.merge({
-        loading: false,
-        all: Map(action.payload.entities.events),
-        attendees: Map(action.payload.entities.attendees),
-        ids: List(action.payload.result)
-      });
-    case GET_EVENTS_FAIL:
-      return state.merge({ error: true });
-    case POST_EVENTS_SUCCES:
-      return state.merge({
-        all: state.get("all").set([action.payload.result.id], action.payload.result)
-      });
-    case ATTEND_EVENT:
-      return state.merge(onStart);
-    case ATTEND_EVENT_SUCCESS:
-      return state.merge({
-        all: state
-          .get("all")
-          .set([action.payload.result.id], action.payload.result)
-      });
-
-    case UNATTEND_EVENT:
-      return state.merge(onStart);
-
-    case UNATTEND_EVENT_SUCCESS:
-      return state.merge({
-        all: state
-          .get("all")
-          .set([action.payload.result.id], action.payload.result)
-      });
     default:
       return state;
   }
-}
+};
+const all = (state = Map(), action) => {
+  switch (action.type) {
+    case GET_EVENTS_SUCCES:
+      return Map(action.payload.entities.events);
+    case ATTEND_EVENT_SUCCESS:
+      return state.set([action.payload.result.id], action.payload.result);
+    case UNATTEND_EVENT_SUCCESS:
+      return state.set([action.payload.result.id], action.payload.result);
+    case REMOVE_EVENT_SUCCESS:
+      return state.delete(action.payload.id);
+
+    default:
+      return state;
+  }
+};
+const attendees = (state = Map(), action) => {
+  switch (action.type) {
+    case GET_EVENTS_SUCCES:
+      return Map(action.payload.entities.attendees);
+
+    default:
+      return state;
+  }
+};
+const ids = (state = List(), action) => {
+  switch (action.type) {
+    case GET_EVENTS_SUCCES:
+      return List(action.payload.result);
+    case REMOVE_EVENT_SUCCESS:
+      return state.delete(state.indexOf(action.payload.id));
+
+    default:
+      return state;
+  }
+};
+
+export default combineReducers({
+  ids,
+  all,
+  attendees,
+  loading
+});
