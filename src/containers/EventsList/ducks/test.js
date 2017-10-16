@@ -1,11 +1,12 @@
 import * as types from "./types";
 import { getEvents, createEvent, attendEvent, unAttendEvent } from "./actions";
 import * as reducer from "./reducer";
-import {Map} from "immutable";
+import { Map, List } from "immutable";
+import mockdata from "../../../mock/events";
 describe("actions", () => {
   it("should create an action to get events", () => {
     const expectedAction = {
-      type: types.GET_EVENTS,
+      type: types.GET_EVENTS
     };
     expect(getEvents()).toEqual(expectedAction);
   });
@@ -34,18 +35,29 @@ describe("actions", () => {
     expect(createEvent(event)).toEqual(expectedAction);
   });
 });
+describe("EventsList reducer", () => {
+  const events = {
+    type: types.GET_EVENTS_SUCCESS,
+    payload: mockdata
+  };
+  it("should return the initial state", () => {
+    expect(reducer.default(List(), List())).toEqual(List());
+  });
+  it("should return the GET_EVENTS_SUCCESS all events", () => {
+    expect(reducer.default(Map(), events).get("all")).toEqual(
+      Map(mockdata.entities.events)
+    );
+  });
+  it("should return the GET_EVENTS_SUCCESS all ids", () => {
+    expect(reducer.default(Map(), events).get("ids")).toEqual(
+      List(mockdata.result)
+    );
+  });
+});
+// describe('EventList reducer', () => {
 
-// describe("EventsList reducer", () => {
-//     it("should handle get events", () => {
-//         const user = Map({
-//             ids:Map
-//         })
-//       expect(
-//           reducer.default(Map(),{
-//             type: types.GET_EVENTS,
-//             payload:1
-//           })
-//       ).toEqual(1)
-//     });
-//   });
-  
+//   it('should handle GET_EVENTS');
+//   it('should handle UPDATE_EVENT');
+//   it('should handle ATTEND_EVENT');
+//   it('should handle UNATTEND_EVENT');
+// });
