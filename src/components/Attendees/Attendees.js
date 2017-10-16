@@ -22,7 +22,6 @@ Attendees.Title = styled.h3`
 Attendees.Item = styled.span`
   background: #d9dce1;
   border-radius: 100px;
-  font-family: Roboto-Regular;
   font-size: 13px;
   color: #949ea8;
   letter-spacing: 0;

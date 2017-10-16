@@ -7,13 +7,14 @@ import { Media } from "../../utils";
 import { Link } from "react-router-dom";
 const StyledLayout = styled.div`
   position: relative;
-  min-height: 100vh;
   background: #fff;
   .bg-white {
     background: #fff;
-    position: relative;
+    // position: relative;
+    display:flex;
+    flex-direction:column;
     min-height: 100vh;
-    ${Media.mobile`margin-top:100px;min-height:auto`};
+    justify-content: center;
   }
   .user,
   .mobile-msg {
@@ -27,7 +28,7 @@ const StyledLayout = styled.div`
     }
   }
   .mobile-msg {
-    display:none;
+    display: none;
     ${Media.mobile`
       display:block;
       float:none;
@@ -48,11 +49,11 @@ const StyledLayout = styled.div`
   .content {
     width: 50%;
     margin: 0 auto;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    transform: translateY(-50%);
+    // position: absolute;
+    // top: 50%;
+    // left: 0;
+    // right: 0;
+    // transform: translateY(-50%);
     ${Media.mobile`
     width:100%;
     padding:24px;
