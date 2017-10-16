@@ -29,7 +29,7 @@ class Dashboard extends Component {
     const { state } = this;
     console.log(events);
     return (
-      <div>
+      <div style={{minHeight:"654px"}}>
         <Col desktop={12}>
           <EventFilters
             onClick={() => (this.filter = "all")}

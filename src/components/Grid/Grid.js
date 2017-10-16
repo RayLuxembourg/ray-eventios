@@ -8,9 +8,11 @@ export const Container = styled.div`
   width: 1200px;
   margin: 0 auto;
   max-width:calc(100% - 16px);
-  margin-top:10em;
-  margin-bottom:5em;
-  ${Media.mobile`margin-top:1em;`}
+  display:flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: center;
+  ${Media.mobile`padding-top: 5em;`}
 `;
 export const Row = styled.div`
   width: 100%;
