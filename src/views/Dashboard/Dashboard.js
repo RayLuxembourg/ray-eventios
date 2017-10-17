@@ -17,15 +17,24 @@ class Dashboard extends Component {
   set filter(filter) {
     this.setState({ filter });
   }
+  get layout() {
+    return this.state.layout;
+  }
+  set layout(layout) {
+    this.setState({ layout });
+  }
   constructor() {
     super();
-    this.state = { filter: "all" };
+    this.state = { filter: "all", layout: "grid" };
   }
   componentDidMount() {
     this.props.getEvents();
   }
   selectedFilter(filter) {
     return this.state.filter === filter ? "selected" : "";
+  }
+  selectedLayout(layout) {
+    return this.state.layout === layout ? "selected" : "";
   }
   render() {
     const { events } = this.props;
@@ -55,10 +64,16 @@ class Dashboard extends Component {
           </EventFilters>
 
           <GridOptions>
-            <GridOptions.Item className={"selected"}>
+            <GridOptions.Item
+              onClick={() => (this.layout = "grid")}
+              className={this.selectedLayout("grid")}
+            >
               <img src={gridIcon} alt="" />
             </GridOptions.Item>
-            <GridOptions.Item>
+            <GridOptions.Item
+              onClick={() => (this.layout = "list")}
+              className={this.selectedLayout("list")}
+            >
               <img src={listIcon} alt="" />
             </GridOptions.Item>
           </GridOptions>
@@ -67,6 +82,7 @@ class Dashboard extends Component {
           {...this.props}
           events={events}
           ids={this.props[this.state.filter]}
+          layout={this.layout}
         />
       </div>
     );
