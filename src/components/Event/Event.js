@@ -87,12 +87,6 @@ const Event = ({ event, attend, unattend, id }) => {
     }
     return { text: "JOIN", color: "primary", method: attend };
   };
-  const descriptionSubstring = desc => {
-    if (desc.length > 60) {
-      return desc.substring(0, 100 - 3) + "...";
-    }
-    return desc;
-  };
   const type = attending();
   const handleButtonClick = e => {
     if (type.method) {
@@ -111,7 +105,7 @@ const Event = ({ event, attend, unattend, id }) => {
       <EventStyle.Organaizer>{`${event.owner.firstName} ${event.owner
         .lastName}`}</EventStyle.Organaizer>
       <EventStyle.Description>
-        {descriptionSubstring(event.description)}
+          {event.description}
       </EventStyle.Description>
       <EventStyle.Attendings className={"att"}>
         <img src={userIcon} alt={"attendees"} />

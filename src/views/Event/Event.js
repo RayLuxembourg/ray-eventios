@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Attendees, Col, Event } from "../../components";
+import { Attendees, Col, Event,DeleteEvent } from "../../components";
 import {
   getEventsById,
   attendeesSelector,
@@ -73,13 +73,10 @@ class EventDetails extends Component {
   removeEvent() {
     if (this.isOwner()) {
       return (
-        <span
-          onClick={this.removeAndRedirect.bind(this)}
-          style={{ float: "right", color: "#FF4081", cursor: "pointer" }}
-        >
-          <img style={{ marginRight: "10px" }} src={deleteIcon} alt="" />
-          DELETE EVENT
-        </span>
+        <DeleteEvent onClick={this.removeAndRedirect.bind(this)}>
+          <DeleteEvent.Img src={deleteIcon} />
+          <DeleteEvent.Text>DELETE EVENT</DeleteEvent.Text>
+        </DeleteEvent>
       );
     }
   }
