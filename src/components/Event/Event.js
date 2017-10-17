@@ -15,15 +15,17 @@ export const EventList = styled.article`
   border-radius: 2px;
   margin-bottom: 20px;
   align-items: center;
-  padding: 32px;
+  padding: 20px 32px;
   position: relative;
-  ${Media.mobile`flex-direction:column;    align-items: baseline;`} &:last-of-type {
+  text-align:left;
+  ${Media.mobile`flex-direction:column;padding:16px;align-items: baseline;`} &:last-of-type {
     margin-bottom: 0;
   }
 `;
 EventList.Title = styled.h3`
-  font-size: 14px;
+  font-size: 18px;
   color: #323c46;
+  font-weight:500;
   letter-spacing: 0;
   line-height: 48px;
   margin: 0;
@@ -31,10 +33,10 @@ EventList.Title = styled.h3`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  ${Media.mobile`width:100%`}
+  ${Media.mobile`width:100%;line-height:24px;margin-top:10px`};
 `;
 EventList.Description = styled.p`
-  font-size: 14px;
+  font-size: 16px;
   color: #949ea8;
   letter-spacing: 0;
   line-height: 24px;
@@ -42,7 +44,7 @@ EventList.Description = styled.p`
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 25%;
-  ${Media.mobile`width:100%`}
+  ${Media.mobile`width:100%`};
 `;
 EventList.Date = styled.small`
   font-size: 14px;
@@ -50,7 +52,7 @@ EventList.Date = styled.small`
   letter-spacing: 0;
   line-height: 24px;
   width: auto;
-  ${Media.mobile`width: calc(100% - 100px);`}
+  ${Media.mobile`width: calc(100% - 100px);`};
 `;
 EventList.Organaizer = styled.small`
   font-size: 14px;
@@ -58,14 +60,15 @@ EventList.Organaizer = styled.small`
   letter-spacing: 0;
   line-height: 24px;
   width: auto;
-  ${Media.mobile`width:100%`}
+  ${Media.mobile`width:100%;display:none`};
 `;
 EventList.Attendings = styled.small`
   width: auto;
   font-size: 14px;
   color: #949ea8;
   letter-spacing: 0;
-  
+  line-height: 24px;
+
   img {
     vertical-align: sub;
     margin-right: 7px;
@@ -73,7 +76,7 @@ EventList.Attendings = styled.small`
 `;
 EventList.Action = styled.div`
   width: auto;
-  ${Media.mobile`position:absolute;right:32px;bottom:32px`};
+  ${Media.mobile`position:absolute;right:16px;bottom:16px`};
 `;
 export const EventGrid = styled.div`
   background: #ffffff;
@@ -86,12 +89,14 @@ export const EventGrid = styled.div`
   cursor: pointer;
   position: relative;
   height: 280px;
-
+  ${Media.mobile`padding:24px`}
   button {
     position: absolute;
     right: 32px;
     bottom: 32px;
     z-index: 1;
+    ${Media.mobile`right:24px;bottom:24px`}
+    
   }
   img {
     vertical-align: sub;
@@ -111,8 +116,9 @@ EventGrid.Title = styled.h3`
   font-size: 22px;
   color: #323c46;
   letter-spacing: 0;
-  line-height: 48px;
+  line-height: 24px;
   margin: 0;
+  margin-top: 24px;
 `;
 EventGrid.Organaizer = styled.span`
   font-size: 14px;
@@ -170,7 +176,7 @@ const Event = ({ event, attend, unattend, id, list }) => {
     return (
       <EventGrid>
         <EventGrid.Date>
-          {format(event.startsAt, "MMMM , D YYYY - h:mA")}
+          {format(event.startsAt, "MMMM D, YYYY - h:m A")}
           {event.startAt}
         </EventGrid.Date>
         <EventGrid.Title>{event.title}</EventGrid.Title>
@@ -197,7 +203,7 @@ const Event = ({ event, attend, unattend, id, list }) => {
         <EventList.Organaizer>{`${event.owner.firstName} ${event.owner
           .lastName}`}</EventList.Organaizer>
         <EventList.Date>
-          {format(event.startsAt, "MMMM , D YYYY - h:mA")}
+          {format(event.startsAt, "MMMM D, YYYY - h:m A")}
           {event.startAt}
         </EventList.Date>
         <EventList.Attendings className={"att"}>
