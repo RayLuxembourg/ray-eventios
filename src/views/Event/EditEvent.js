@@ -40,9 +40,7 @@ let EditEvent = props => {
   const {
     handleSubmit,
     submitting,
-    newEvent,
     loading,
-    event,
     saveEdit
   } = props;
   console.log(props);

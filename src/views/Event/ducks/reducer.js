@@ -1,15 +1,10 @@
 import { combineReducers } from "redux-immutable";
 import { Map } from "immutable";
 import {
-  GET_EVENT_BY_ID,
   GET_EVENT_BY_ID_SUCCESS,
-  GET_EVENT_BY_ID_FAIL,
-  ATTEND_EVENT,
   ATTEND_EVENT_SUCCESS,
-  ATTEND_EVENT_FAIL,
-  UNATTEND_EVENT,
   UNATTEND_EVENT_SUCCESS,
-  UNATTEND_EVENT_FAIL
+  
 } from "./types";
 
 

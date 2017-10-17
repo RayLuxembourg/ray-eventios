@@ -1,30 +1,54 @@
 import { Map } from "immutable";
-import {REGISTER,REGISTER_SUCCESS,REGISTER_FAIL} from "./types";
-const initialState = Map({
-  loading: false,
-  error: null,
-  success: false,
-  createdUser: Map()
-});
+import {combineReducers} from "redux-immutable";
+import {REGISTER,REGISTER_DONE,REGISTER_SUCCESS,REGISTER_FAIL} from "./types";
 
-export default function reducer(state = initialState, action = {}) {
+const error = (state = false, action) => {
   switch (action.type) {
-    case REGISTER:
-      return state.merge({
-        loading: true,
-        error: null,
-        success: false,
-        user: Map()
-      });
-    case REGISTER_SUCCESS:
-      return state.merge({
-        loading: false,
-        createdUser: Map(action.payload),
-        success: true
-      });
     case REGISTER_FAIL:
-      return state.merge({ loading: false, error: true, success: false });
+      return true;
+    case REGISTER:
+    case REGISTER_SUCCESS:
+    case REGISTER_DONE:
+      return false;
     default:
       return state;
   }
-}
+};
+const loading = (state = false, action) => {
+  switch (action.type) {
+    case REGISTER:
+      return true;
+    case REGISTER_SUCCESS:
+    case REGISTER_FAIL:
+    case REGISTER_DONE:
+      return false;
+    default:
+      return state;
+  }
+};
+const success = (state = false, action) => {
+  switch (action.type) {
+    case REGISTER:
+    case REGISTER_FAIL:
+    case REGISTER_DONE:
+      return false;
+    case REGISTER_SUCCESS:
+      return true;
+    default:
+      return state;
+  }
+};
+const createdUser = (state = Map(), action) => {
+  switch (action.type) {
+    case REGISTER_SUCCESS:
+      return Map(action.payload);
+    default:
+      return state;
+  }
+};
+export default combineReducers({
+  loading,
+  createdUser,
+  error,
+  success
+});

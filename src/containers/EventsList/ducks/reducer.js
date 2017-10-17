@@ -2,19 +2,11 @@ import { Map, List } from "immutable";
 import { combineReducers } from "redux-immutable";
 
 import {
-  GET_EVENTS,
   GET_EVENTS_SUCCESS,
-  GET_EVENTS_FAIL,
   CREATE_EVENT_SUCCESS,
-  UPDATE_EVENT,
   UPDATE_EVENT_SUCCESS,
-  UPDATE_EVENT_FAIL,
-  REMOVE_EVENT,
   REMOVE_EVENT_SUCCESS,
-  REMOVE_EVENT_FAIL,
-  ATTEND_EVENT,
   ATTEND_EVENT_SUCCESS,
-  UNATTEND_EVENT,
   UNATTEND_EVENT_SUCCESS
 } from "./types";
 

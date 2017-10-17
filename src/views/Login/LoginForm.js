@@ -19,7 +19,7 @@ const validate = form => {
   return errors;
 };
 const LoginForm = props => {
-  const { handleSubmit, pristine, reset, submitting, login, isLoading,isError } = props;
+  const { handleSubmit, submitting, login, isLoading,isError } = props;
   console.log(props);
   return (
     <form onSubmit={handleSubmit(login)}>

@@ -1,8 +1,8 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import {Switch } from "react-router-dom";
 import {Dashboard,Login,Register,Event as EventView,Profile,NewEvent} from "./views"
 import {Restricted} from "./utils";
-import {SidebarLayout,DashboardLayout} from "./components";
+import {SidebarLayout} from "./components";
 import {Layout} from "./containers"
 export default () => {
   return (

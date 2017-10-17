@@ -82,7 +82,7 @@ class EventDetails extends Component {
   }
   render() {
     const { match } = this.props;
-    const { event, attendees } = this.props;
+    const { event } = this.props;
 
     if (event && event.id === match.params.id) {
       return (

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Button, Input, Headline } from "../../components/";
 import {
   login,
   loginComplete,

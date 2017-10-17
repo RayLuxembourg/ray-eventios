@@ -1,9 +1,11 @@
 const REGISTER = "Eventio/user/REGISTER";
 const REGISTER_SUCCESS = "Eventio/user/REGISTER_SUCCESS";
 const REGISTER_FAIL = "Eventio/user/REGISTER_FAIL";
+const REGISTER_DONE = "Eventio/user/REGISTER_DONE";
 
 export {
     REGISTER,
     REGISTER_SUCCESS,
-    REGISTER_FAIL
+    REGISTER_FAIL,
+    REGISTER_DONE
 }

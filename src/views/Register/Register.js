@@ -1,27 +1,30 @@
 import React from "react";
 import { connect } from "react-redux";
-import { register } from "./ducks";
+import { register,registerCompleted,errorSelector,loadingSelector,successSelector } from "./ducks";
 import RegisterForm from "./RegisterForm";
 
 const Register = props => {
   const handleSubmit = form => {
-    props.register(form.toJS());
+    props.register(form.toObject());
   };
-  const { history } = props;
-  const register = props.registerState.toJS();
-  if (register.success) {
+  const { history,loading,success,error,registerCompleted } = props;
+  if (success) {
+    registerCompleted();
     history.push("/login");
   }
   return (
     <RegisterForm
-      loading={register.loading}
+      isError={error}
+      loading={loading}
       register={form => handleSubmit(form)}
     />
   );
 };
 
 const mapStateToProps = state => ({
-  registerState: state.get("register")
+  loading:loadingSelector(state),
+  success:successSelector(state),
+  error:errorSelector(state)
 });
 
-export default connect(mapStateToProps, { register })(Register);
+export default connect(mapStateToProps, { register,registerCompleted })(Register);

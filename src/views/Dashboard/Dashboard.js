@@ -29,7 +29,6 @@ class Dashboard extends Component {
   }
   render() {
     const { events } = this.props;
-    const { state } = this;
     console.log(events);
     return (
       <div style={{ minHeight: "654px" }}>
