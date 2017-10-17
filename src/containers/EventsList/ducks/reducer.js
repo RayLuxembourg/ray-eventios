@@ -32,10 +32,9 @@ const all = (state = Map(), action) => {
     case ATTEND_EVENT_SUCCESS:
     case UNATTEND_EVENT_SUCCESS:
     case CREATE_EVENT_SUCCESS:
-      return state.set([action.payload.result.id], action.payload.result);
+      return state.set(action.payload.result.id, action.payload.result);
     case REMOVE_EVENT_SUCCESS:
       return state.delete(action.payload.id);
-      
 
     default:
       return state;
@@ -45,6 +44,9 @@ const attendees = (state = Map(), action) => {
   switch (action.type) {
     case GET_EVENTS_SUCCESS:
       return Map(action.payload.entities.attendees);
+    case ATTEND_EVENT_SUCCESS:
+    case UNATTEND_EVENT_SUCCESS:
+      return state.merge(action.payload.entities.attendees);
     default:
       return state;
   }

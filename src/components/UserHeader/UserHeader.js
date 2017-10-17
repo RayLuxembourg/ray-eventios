@@ -7,6 +7,7 @@ float: right;
 position: relative;
 cursor: pointer;
 padding-top: 4px;
+margin-right: 15px;
 &:after {
   content: "";
   width: 0;

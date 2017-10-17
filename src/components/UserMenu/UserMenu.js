@@ -10,8 +10,7 @@ const UserMenu = styled.ul`
     list-style: none;
     min-width:162px;
     display:none;
-   z-index:10;
-
+    z-index:10;
     &:after{
     content:"",
     width: 0;
