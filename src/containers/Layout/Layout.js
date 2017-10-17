@@ -62,7 +62,7 @@ position: relative;
 }
 .attendees {
   padding-left: 20px;
-  ${Media.mobile`padding-left:0;margin-top:15px`};
+  ${Media.mobile`padding-left:8px;margin-top:15px`};
 }
 `;
 class Layout extends React.Component {

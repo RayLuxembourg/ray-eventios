@@ -3,7 +3,9 @@ import { getEvents, createEvent, attendEvent, unAttendEvent } from "./actions";
 import * as reducer from "./reducer";
 import { Map, List } from "immutable";
 import mockdata from "../../../mock/events";
-import {normlizeEventList} from "./schema";
+import singleEventMock from "../../../mock/event";
+
+import {normlizeEventList,normlizeEvent} from "./schema";
 describe("actions", () => {
   it("should create an action to get events", () => {
     const expectedAction = {
@@ -38,10 +40,15 @@ describe("actions", () => {
 });
 describe("EventsList reducer", () => {
   const data = normlizeEventList(mockdata);
+  const singleEvents = normlizeEvent(singleEventMock);
   const events = {
     type: types.GET_EVENTS_SUCCESS,
     payload: data
   };
+  const attend = {
+    type: types.ATTEND_EVENT_SUCCESS,
+    payload: singleEvents
+  }
   it("should return the initial state", () => {
     expect(reducer.default(List(), List())).toEqual(List());
   });
@@ -60,5 +67,9 @@ describe("EventsList reducer", () => {
       Map(data.entities.attendees)
     );
   });
-  
+  it("should return updated state ATTEND_EVENT", () => {
+    expect(reducer.default(undefined, attend).get("attendees")).toEqual(
+      Map(singleEvents.entities.attendees)
+    );
+  });  
 });

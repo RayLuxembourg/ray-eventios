@@ -30,6 +30,7 @@ class EventsList extends Component {
       if (layout === "list") {
         return ids.map(id => (
           <Event
+            onClick={() => this.props.history.push("/event/" + id)}
             key={id}
             attend={this.props.attendEvent}
             unattend={this.props.unAttendEvent}
@@ -44,7 +45,11 @@ class EventsList extends Component {
   }
   render() {
     const { events, ids, layout } = this.props;
-    return <div style={{padding:layout==="list"?"0 8px":""}}>{this.mapEvents(ids, events, layout)}</div>;
+    return (
+      <div style={{ padding: layout === "list" ? "0 8px" : "" }}>
+        {this.mapEvents(ids, events, layout)}
+      </div>
+    );
   }
 }
 

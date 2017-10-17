@@ -147,7 +147,7 @@ EventGrid.Attendings = styled.div`
     margin-right: 7px;
   }
 `;
-const Event = ({ event, attend, unattend, id, list }) => {
+const Event = ({ event, attend, unattend, id, list,onClick }) => {
   const attending = () => {
     let type;
     if (id === event.owner.id) {
@@ -197,7 +197,7 @@ const Event = ({ event, attend, unattend, id, list }) => {
     );
   } else {
     return (
-      <EventList>
+      <EventList onClick={onClick}>
         <EventList.Title>{event.title}</EventList.Title>
         <EventList.Description>{event.description}</EventList.Description>
         <EventList.Organaizer>{`${event.owner.firstName} ${event.owner
