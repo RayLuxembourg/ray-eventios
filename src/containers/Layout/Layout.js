@@ -72,7 +72,7 @@ class Layout extends React.Component {
   }
   backToDashboard = history => {
     console.log(history);
-    if (history.location.pathname !== "/" && history.location.pathname !== "profile" ) {
+    if (history.location.pathname !== "/" && history.location.pathname !== "/profile" ) {
       return (
         <div onClick={() => history.push("/")} className="back-to-events">
           <img src={backArrowIcon} alt="" />
