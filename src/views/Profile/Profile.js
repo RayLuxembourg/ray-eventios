@@ -1,22 +1,36 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { ProfileInfo, Event, Col } from "../../components";
+import { ProfileInfo, Event, Col, GridOptions } from "../../components";
 import {
   attendingEventsSelector,
   ownerEventsSelector,
   allEventsSelector
 } from "./ducks";
-import {EventsList} from "../../containers";
-import {getEvents} from "../../containers/EventsList/ducks";
+import { EventsList } from "../../containers";
+import { getEvents } from "../../containers/EventsList/ducks";
 import styled from "styled-components";
-import {Media} from "../../utils";
+import { Media } from "../../utils";
+import { gridIcon, listIcon } from "../../assets";
 const ProfileStyle = styled.div`
-      padding:10em 7.5px;
-      ${Media.mobile`padding:1em 7.5px`}
+  padding: 10em 7.5px;
+  ${Media.mobile`padding:1em 7.5px`};
 `;
 class Profile extends Component {
   componentDidMount() {
     this.props.getEvents();
+  }
+  constructor() {
+    super();
+    this.state = { layout: "grid" };
+  }
+  get layout() {
+    return this.state.layout;
+  }
+  set layout(layout) {
+    this.setState({ layout });
+  }
+  selectedLayout(layout) {
+    return this.state.layout === layout ? "selected" : "";
   }
   mapMyEvents(ids, events) {
     return ids.map(id => {
@@ -41,11 +55,28 @@ class Profile extends Component {
           </ProfileInfo.Title>
           <ProfileInfo.Sub>{user.email}</ProfileInfo.Sub>
         </ProfileInfo>
-        <h3>My Events</h3>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+          <h3>My Events</h3>
+          <GridOptions>
+            <GridOptions.Item
+              onClick={() => (this.layout = "grid")}
+              className={this.selectedLayout("grid")}
+            >
+              <img src={gridIcon} alt="" />
+            </GridOptions.Item>
+            <GridOptions.Item
+              onClick={() => (this.layout = "list")}
+              className={this.selectedLayout("list")}
+            >
+              <img src={listIcon} alt="" />
+            </GridOptions.Item>
+          </GridOptions>
+        </div>
         <EventsList
           {...this.props}
           events={events}
           ids={[...ownerEvents, ...attendingEvents]}
+          layout={this.layout}
         />
       </ProfileStyle>
     );
@@ -56,4 +87,4 @@ const mapStateToProps = state => ({
   ownerEvents: ownerEventsSelector(state),
   events: allEventsSelector(state)
 });
-export default connect(mapStateToProps,{getEvents})(Profile);
+export default connect(mapStateToProps, { getEvents })(Profile);
