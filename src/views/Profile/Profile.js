@@ -11,9 +11,8 @@ import {getEvents} from "../../containers/EventsList/ducks";
 import styled from "styled-components";
 import {Media} from "../../utils";
 const ProfileStyle = styled.div`
-      padding:"7.5px";
-      padding-top: 10em;
-      ${Media.mobile`padding-top: 1em;`}
+      padding:10em 7.5px;
+      ${Media.mobile`padding:1em 7.5px`}
 `;
 class Profile extends Component {
   componentDidMount() {
