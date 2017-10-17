@@ -8,6 +8,13 @@ import {
 } from "./ducks";
 import {EventsList} from "../../containers";
 import {getEvents} from "../../containers/EventsList/ducks";
+import styled from "styled-components";
+import {Media} from "../../utils";
+const ProfileStyle = styled.div`
+      padding:"7.5px";
+      padding-top: 10em;
+      ${Media.mobile`padding-top: 1em;`}
+`;
 class Profile extends Component {
   componentDidMount() {
     this.props.getEvents();
@@ -25,7 +32,7 @@ class Profile extends Component {
     const user = JSON.parse(localStorage.getItem("user"));
     const { attendingEvents, ownerEvents, events } = this.props;
     return (
-      <div style={{padding:"7.5px"}}>
+      <ProfileStyle>
         <ProfileInfo>
           <ProfileInfo.Profile>
             {user.firstName[0]} {user.lastName[0]}
@@ -41,7 +48,7 @@ class Profile extends Component {
           events={events}
           ids={[...ownerEvents, ...attendingEvents]}
         />
-      </div>
+      </ProfileStyle>
     );
   }
 }
