@@ -7,7 +7,7 @@ const column = columns => {
 export const Container = styled.div`
   width: 1200px;
   margin: 0 auto;
-  max-width: calc(100% - 16px);
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -27,6 +27,7 @@ export const Row = styled.div`
 export const Col = styled.div`
   width: ${({ desktop }) => column(desktop)};
   float: left;
+  padding:${({ event }) => "8px"};
   ${Media.mobile`
     width: ${({ mobile }) => column(mobile)};
   `};

@@ -12,8 +12,8 @@ import styled from "styled-components";
 import { Media } from "../../utils";
 import { gridIcon, listIcon } from "../../assets";
 const ProfileStyle = styled.div`
-  padding: 10em 7.5px;
-  ${Media.mobile`padding:1em 7.5px`};
+  padding: 10em 0;
+  ${Media.mobile`padding:1em 0`};
 `;
 class Profile extends Component {
   componentDidMount() {
@@ -35,7 +35,7 @@ class Profile extends Component {
   mapMyEvents(ids, events) {
     return ids.map(id => {
       return (
-        <Col desktop={4} mobile={12} style={{ padding: "7.5px" }}>
+        <Col desktop={4} mobile={12} style={{ padding: "8px" }}>
           <Event {...this.props} event={events[id]} />
         </Col>
       );
@@ -46,6 +46,7 @@ class Profile extends Component {
     const { attendingEvents, ownerEvents, events } = this.props;
     return (
       <ProfileStyle>
+        <div style={{padding:"0 8px"}}>
         <ProfileInfo>
           <ProfileInfo.Profile>
             {user.firstName[0]} {user.lastName[0]}
@@ -55,7 +56,8 @@ class Profile extends Component {
           </ProfileInfo.Title>
           <ProfileInfo.Sub>{user.email}</ProfileInfo.Sub>
         </ProfileInfo>
-        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+        </div>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"0 8px"}}>
           <h3>My Events</h3>
           <GridOptions>
             <GridOptions.Item
