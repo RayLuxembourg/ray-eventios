@@ -4,7 +4,78 @@ import Button from "../Button/Button";
 import format from "date-fns/format";
 import { userIcon } from "../../assets";
 import PropTypes from "prop-types";
-export const EventStyle = styled.div`
+import { Media } from "../../utils";
+export const EventList = styled.article`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.11);
+  border-radius: 2px;
+  margin-bottom: 20px;
+  align-items: center;
+  padding: 32px;
+  position: relative;
+  ${Media.mobile`flex-direction:column;    align-items: baseline;`} &:last-of-type {
+    margin-bottom: 0;
+  }
+`;
+EventList.Title = styled.h3`
+  font-size: 14px;
+  color: #323c46;
+  letter-spacing: 0;
+  line-height: 48px;
+  margin: 0;
+  width: 25%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  ${Media.mobile`width:100%`}
+`;
+EventList.Description = styled.p`
+  font-size: 14px;
+  color: #949ea8;
+  letter-spacing: 0;
+  line-height: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 25%;
+  ${Media.mobile`width:100%`}
+`;
+EventList.Date = styled.small`
+  font-size: 14px;
+  color: #cacdd0;
+  letter-spacing: 0;
+  line-height: 24px;
+  width: auto;
+  ${Media.mobile`width: calc(100% - 100px);`}
+`;
+EventList.Organaizer = styled.small`
+  font-size: 14px;
+  color: #7d7878;
+  letter-spacing: 0;
+  line-height: 24px;
+  width: auto;
+  ${Media.mobile`width:100%`}
+`;
+EventList.Attendings = styled.small`
+  width: auto;
+  font-size: 14px;
+  color: #949ea8;
+  letter-spacing: 0;
+  
+  img {
+    vertical-align: sub;
+    margin-right: 7px;
+  }
+`;
+EventList.Action = styled.div`
+  width: auto;
+  ${Media.mobile`position:absolute;right:32px;bottom:32px`};
+`;
+export const EventGrid = styled.div`
   background: #ffffff;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.11);
   border-radius: 2px;
@@ -30,26 +101,26 @@ export const EventStyle = styled.div`
   }
 `;
 
-EventStyle.Date = styled.small`
+EventGrid.Date = styled.small`
   font-size: 14px;
   color: #cacdd0;
   letter-spacing: 0;
   line-height: 24px;
 `;
-EventStyle.Title = styled.h3`
+EventGrid.Title = styled.h3`
   font-size: 22px;
   color: #323c46;
   letter-spacing: 0;
   line-height: 48px;
   margin: 0;
 `;
-EventStyle.Organaizer = styled.span`
+EventGrid.Organaizer = styled.span`
   font-size: 14px;
   color: #7d7878;
   letter-spacing: 0;
   line-height: 24px;
 `;
-EventStyle.Description = styled.p`
+EventGrid.Description = styled.p`
   font-size: 16px;
   color: #949ea8;
   letter-spacing: 0;
@@ -58,7 +129,7 @@ EventStyle.Description = styled.p`
   text-overflow: ellipsis;
   white-space: nowrap;
 `;
-EventStyle.Attendings = styled.div`
+EventGrid.Attendings = styled.div`
   position: absolute;
   bottom: 32px;
   left: 32px;
@@ -70,7 +141,7 @@ EventStyle.Attendings = styled.div`
     margin-right: 7px;
   }
 `;
-const Event = ({ event, attend, unattend, id }) => {
+const Event = ({ event, attend, unattend, id, list }) => {
   const attending = () => {
     let type;
     if (id === event.owner.id) {
@@ -95,54 +166,78 @@ const Event = ({ event, attend, unattend, id }) => {
       type.method(event.id);
     }
   };
-  return (
-    <EventStyle>
-      <EventStyle.Date>
-        {format(event.startsAt, "MMMM , D YYYY - h:mA")}
-        {event.startAt}
-      </EventStyle.Date>
-      <EventStyle.Title>{event.title}</EventStyle.Title>
-      <EventStyle.Organaizer>{`${event.owner.firstName} ${event.owner
-        .lastName}`}</EventStyle.Organaizer>
-      <EventStyle.Description>
-          {event.description}
-      </EventStyle.Description>
-      <EventStyle.Attendings className={"att"}>
-        <img src={userIcon} alt={"attendees"} />
-        {`${event.attendees.length} of ${event.capacity}`}
-      </EventStyle.Attendings>
-      <Button
-        color={type.color}
-        onClick={handleButtonClick}
-        size={"sm"}
-        content={type.text}
-      />
-    </EventStyle>
-  );
+  if (!list) {
+    return (
+      <EventGrid>
+        <EventGrid.Date>
+          {format(event.startsAt, "MMMM , D YYYY - h:mA")}
+          {event.startAt}
+        </EventGrid.Date>
+        <EventGrid.Title>{event.title}</EventGrid.Title>
+        <EventGrid.Organaizer>{`${event.owner.firstName} ${event.owner
+          .lastName}`}</EventGrid.Organaizer>
+        <EventGrid.Description>{event.description}</EventGrid.Description>
+        <EventGrid.Attendings className={"att"}>
+          <img src={userIcon} alt={"attendees"} />
+          {`${event.attendees.length} of ${event.capacity}`}
+        </EventGrid.Attendings>
+        <Button
+          color={type.color}
+          onClick={handleButtonClick}
+          size={"sm"}
+          content={type.text}
+        />
+      </EventGrid>
+    );
+  } else {
+    return (
+      <EventList>
+        <EventList.Title>{event.title}</EventList.Title>
+        <EventList.Description>{event.description}</EventList.Description>
+        <EventList.Organaizer>{`${event.owner.firstName} ${event.owner
+          .lastName}`}</EventList.Organaizer>
+        <EventList.Date>
+          {format(event.startsAt, "MMMM , D YYYY - h:mA")}
+          {event.startAt}
+        </EventList.Date>
+        <EventList.Attendings className={"att"}>
+          {`${event.attendees.length} of ${event.capacity}`}
+        </EventList.Attendings>
+        <EventList.Action>
+          <Button
+            color={type.color}
+            onClick={handleButtonClick}
+            size={"sm"}
+            content={type.text}
+          />
+        </EventList.Action>
+      </EventList>
+    );
+  }
 };
 
 Event.proptypes = {
   event: PropTypes.shape({
-    startAt:PropTypes.string,
-    title:PropTypes.string,
-    owner:PropTypes.object,
-    attendees:PropTypes.array,
-    capacity:PropTypes.number,
-    description:PropTypes.string
+    startAt: PropTypes.string,
+    title: PropTypes.string,
+    owner: PropTypes.object,
+    attendees: PropTypes.array,
+    capacity: PropTypes.number,
+    description: PropTypes.string
   }).isRequired,
   attend: PropTypes.func.isRequired,
   unattend: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired
 };
 Event.defaultProps = {
-  event:{
-    startAt:"",
-    title:"",
-    owner:{},
-    attendees:[],
-    capacity:0,
-    description:""
+  event: {
+    startAt: "",
+    title: "",
+    owner: {},
+    attendees: [],
+    capacity: 0,
+    description: ""
   }
-}
+};
 export default Event;
 //date format MMMM , D YYYY - h:m
