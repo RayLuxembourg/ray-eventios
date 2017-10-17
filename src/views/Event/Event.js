@@ -47,6 +47,7 @@ class EventDetails extends Component {
     this.props.history.push("/");    
   }
   evenInfo(event) {
+    const id = JSON.parse(localStorage.getItem("user")).id;    
     if (this.isOwner()) {
       return (
         <EditEvent
@@ -60,6 +61,7 @@ class EventDetails extends Component {
         attend={this.props.attendEvent}
         unattend={this.props.unAttendEvent}
         event={event}
+        id={id}
       />
     );
   }

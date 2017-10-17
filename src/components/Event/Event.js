@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Button from "../Button/Button";
 import format from "date-fns/format";
 import { userIcon } from "../../assets";
+import PropTypes from "prop-types";
 export const EventStyle = styled.div`
   background: #ffffff;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.11);
@@ -15,12 +16,11 @@ export const EventStyle = styled.div`
   position: relative;
   height: 280px;
 
-
   button {
     position: absolute;
     right: 32px;
     bottom: 32px;
-    z-index:1;
+    z-index: 1;
   }
   img {
     vertical-align: sub;
@@ -70,9 +70,8 @@ EventStyle.Attendings = styled.div`
     margin-right: 7px;
   }
 `;
-const Event = ({ event, attend, unattend }) => {
+const Event = ({ event, attend, unattend, id }) => {
   const attending = () => {
-    const id = JSON.parse(localStorage.getItem("user")).id;
     let type;
     if (id === event.owner.id) {
       type = "organizer";
@@ -81,12 +80,12 @@ const Event = ({ event, attend, unattend }) => {
       type = "attending";
     }
     if (type === "organizer") {
-      return { text: "EDIT", color: "secondary",method: null };
+      return { text: "EDIT", color: "secondary", method: null };
     }
     if (type === "attending") {
       return { text: "LEAVE", color: "danger", method: unattend };
     }
-    return { text: "JOIN", color: "primary", method: attend  };
+    return { text: "JOIN", color: "primary", method: attend };
   };
   const descriptionSubstring = desc => {
     if (desc.length > 60) {
@@ -95,15 +94,15 @@ const Event = ({ event, attend, unattend }) => {
     return desc;
   };
   const type = attending();
-  const handleButtonClick = (e) =>{
-    if(type.method){
-      e.preventDefault(); 
-      e.stopPropagation();  
+  const handleButtonClick = e => {
+    if (type.method) {
+      e.preventDefault();
+      e.stopPropagation();
       type.method(event.id);
     }
-  }
+  };
   return (
-    <EventStyle >
+    <EventStyle>
       <EventStyle.Date>
         {format(event.startsAt, "MMMM , D YYYY - h:mA")}
         {event.startAt}
@@ -128,5 +127,28 @@ const Event = ({ event, attend, unattend }) => {
   );
 };
 
+Event.proptypes = {
+  event: PropTypes.shape({
+    startAt:PropTypes.string,
+    title:PropTypes.string,
+    owner:PropTypes.object,
+    attendees:PropTypes.array,
+    capacity:PropTypes.number,
+    description:PropTypes.string
+  }).isRequired,
+  attend: PropTypes.func.isRequired,
+  unattend: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired
+};
+Event.defaultProps = {
+  event:{
+    startAt:"",
+    title:"",
+    owner:{},
+    attendees:[],
+    capacity:0,
+    description:""
+  }
+}
 export default Event;
 //date format MMMM , D YYYY - h:m

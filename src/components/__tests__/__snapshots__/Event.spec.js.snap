@@ -1,0 +1,302 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Attendess component test renders without crashing 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Event
+    event={
+        Object {
+            "attendees": Array [],
+            "capacity": 0,
+            "description": "",
+            "owner": Object {},
+            "startAt": "",
+            "title": "",
+          }
+    }
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": null,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <styled.small>
+          Invalid Date
+          
+</styled.small>,
+        <styled.h3 />,
+        <styled.span>
+          undefined undefined
+</styled.span>,
+        <styled.p />,
+        <styled.div
+          className="att"
+>
+          <img
+                    alt="attendees"
+                    src="https://i.imgur.com/6hFcWTs.png"
+          />
+          0 of 0
+</styled.div>,
+        <Button
+          color="secondary"
+          content="EDIT"
+          onClick={[Function]}
+          size="sm"
+/>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            "Invalid Date",
+            "",
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          "Invalid Date",
+          "",
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "class",
+        "props": Object {
+          "children": "",
+        },
+        "ref": null,
+        "rendered": "",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "class",
+        "props": Object {
+          "children": "undefined undefined",
+        },
+        "ref": null,
+        "rendered": "undefined undefined",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "class",
+        "props": Object {
+          "children": "",
+        },
+        "ref": null,
+        "rendered": "",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <img
+              alt="attendees"
+              src="https://i.imgur.com/6hFcWTs.png"
+/>,
+            "0 of 0",
+          ],
+          "className": "att",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "host",
+            "props": Object {
+              "alt": "attendees",
+              "src": "https://i.imgur.com/6hFcWTs.png",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "img",
+          },
+          "0 of 0",
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "function",
+        "props": Object {
+          "color": "secondary",
+          "content": "EDIT",
+          "onClick": [Function],
+          "size": "sm",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": null,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <styled.small>
+            Invalid Date
+            
+</styled.small>,
+          <styled.h3 />,
+          <styled.span>
+            undefined undefined
+</styled.span>,
+          <styled.p />,
+          <styled.div
+            className="att"
+>
+            <img
+                        alt="attendees"
+                        src="https://i.imgur.com/6hFcWTs.png"
+            />
+            0 of 0
+</styled.div>,
+          <Button
+            color="secondary"
+            content="EDIT"
+            onClick={[Function]}
+            size="sm"
+/>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              "Invalid Date",
+              "",
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            "Invalid Date",
+            "",
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {
+            "children": "",
+          },
+          "ref": null,
+          "rendered": "",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {
+            "children": "undefined undefined",
+          },
+          "ref": null,
+          "rendered": "undefined undefined",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {
+            "children": "",
+          },
+          "ref": null,
+          "rendered": "",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <img
+                alt="attendees"
+                src="https://i.imgur.com/6hFcWTs.png"
+/>,
+              "0 of 0",
+            ],
+            "className": "att",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "host",
+              "props": Object {
+                "alt": "attendees",
+                "src": "https://i.imgur.com/6hFcWTs.png",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "img",
+            },
+            "0 of 0",
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "function",
+          "props": Object {
+            "color": "secondary",
+            "content": "EDIT",
+            "onClick": [Function],
+            "size": "sm",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

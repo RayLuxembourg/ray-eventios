@@ -4,6 +4,7 @@ import { attendEvent, unAttendEvent } from "./ducks";
 import { Col, Event } from "../../components";
 class EventsList extends Component {
   mapEvents(ids, events) {
+    const userId = JSON.parse(localStorage.getItem("user")).id;    
     return ids.map(id => (
       <Col
         onClick={() => this.props.history.push("/event/" + id)}
@@ -16,6 +17,7 @@ class EventsList extends Component {
           attend={this.props.attendEvent}
           unattend={this.props.unAttendEvent}
           event={events[id]}
+          id={userId}
         />
       </Col>
     ));
