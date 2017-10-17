@@ -6,6 +6,9 @@ import {
   GET_EVENTS_SUCCESS,
   GET_EVENTS_FAIL,
   CREATE_EVENT_SUCCESS,
+  UPDATE_EVENT,
+  UPDATE_EVENT_SUCCESS,
+  UPDATE_EVENT_FAIL,
   REMOVE_EVENT,
   REMOVE_EVENT_SUCCESS,
   REMOVE_EVENT_FAIL,
@@ -25,15 +28,14 @@ const all = (state = Map(), action) => {
   switch (action.type) {
     case GET_EVENTS_SUCCESS:
       return Map(action.payload.entities.events);
+    case UPDATE_EVENT_SUCCESS:
     case ATTEND_EVENT_SUCCESS:
-      return state.set([action.payload.result.id], action.payload.result);
     case UNATTEND_EVENT_SUCCESS:
+    case CREATE_EVENT_SUCCESS:
       return state.set([action.payload.result.id], action.payload.result);
     case REMOVE_EVENT_SUCCESS:
       return state.delete(action.payload.id);
-    case CREATE_EVENT_SUCCESS:
-      console.log(state.set([action.payload.result.id], action.payload.result));
-      return state.set([action.payload.result.id], action.payload.result);
+      
 
     default:
       return state;
