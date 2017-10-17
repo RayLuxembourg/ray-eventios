@@ -1,16 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button, Input, Headline } from "../../components/";
-import { login } from "./ducks";
+import {
+  login,
+  loginComplete,
+  errorSelector,
+  loadingSelector,
+  successSelector
+} from "./ducks";
 import { Redirect } from "react-router-dom";
-import {removeAuth} from "../../api";
+import { removeAuth } from "../../api";
 import LoginForm from "./LoginForm";
 class Login extends Component {
-  constructor() {
-    super();
-    this.state = { email: "", password: "", redirectToRef: false };
-  }
-  componentDidMount(){
+
+  componentDidMount() {
     removeAuth();
     localStorage.removeItem("token");
   }
@@ -24,14 +27,24 @@ class Login extends Component {
     const { from } = this.props.location.state || {
       from: { pathname: "/" }
     };
-    const auth = this.props.auth.toJS();
-    if (auth.success) {
+    console.log(this.props)
+    const {loading,success,error,loginComplete} = this.props;
+    if (success) {
+      loginComplete();
       return <Redirect to={from} />;
     }
-    return <LoginForm loading={auth.loading} login={(loginFrom)=>this.handleSubmit(loginFrom)} />
+    return (
+      <LoginForm
+        isError={error}
+        isLoading={loading}
+        login={loginFrom => this.handleSubmit(loginFrom)}
+      />
+    );
   }
 }
 const mapStateToProps = state => ({
-  auth: state.get("auth")
+  error: errorSelector(state),
+  loading: loadingSelector(state),
+  success: successSelector(state)
 });
-export default connect(mapStateToProps, { login })(Login);
+export default connect(mapStateToProps, { login,loginComplete })(Login);

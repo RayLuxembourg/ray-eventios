@@ -1,5 +1,8 @@
-import { LOGIN } from "./types";
+import { LOGIN,LOGIN_DONE } from "./types";
 
-export default function login(user) {
+export  function login(user) {
     return { type: LOGIN, payload: user };
+}
+export  function loginComplete() {
+    return { type: LOGIN_DONE };
 }

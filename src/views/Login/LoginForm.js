@@ -19,12 +19,14 @@ const validate = form => {
   return errors;
 };
 const LoginForm = props => {
-  const { handleSubmit, pristine, reset, submitting, login, loading } = props;
+  const { handleSubmit, pristine, reset, submitting, login, isLoading,isError } = props;
+  console.log(props);
   return (
     <form onSubmit={handleSubmit(login)}>
       <Headline
         title={"Sign in to Eventio"}
         subtitle={"Enter your details below."}
+        errorMsg={isError ? "Oops! That email and password combination is not valid" : null}
       />
       <Field name="email" label={"Email"} component={Input} type="text" />
       <Field
@@ -41,7 +43,7 @@ const LoginForm = props => {
       <Button
         type={"submit"}
         content={"SIGN IN"}
-        loading={loading}
+        loading={isLoading}
         disabled={submitting}
       />
     </form>
