@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import {Media} from "../../utils"
 const DeleteEvent = styled.div`
   float: right;
   color: #ff4081;
@@ -10,6 +10,7 @@ DeleteEvent.Img = styled.img`
 `;
 DeleteEvent.Text = styled.span`
     font-family:Roboto;
+    ${Media.mobile`display:none`}
 
 `;
 export default DeleteEvent;

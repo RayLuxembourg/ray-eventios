@@ -3,6 +3,8 @@ import { combineReducers } from "redux-immutable";
 
 import {
   GET_EVENTS_SUCCESS,
+  GET_EVENTS,
+  GET_EVENTS_FAIL,
   CREATE_EVENT_SUCCESS,
   UPDATE_EVENT_SUCCESS,
   REMOVE_EVENT_SUCCESS,
@@ -12,6 +14,11 @@ import {
 
 const loading = (state = false, action) => {
   switch (action.type) {
+    case GET_EVENTS:
+      return true;
+    case GET_EVENTS_SUCCESS:
+    case GET_EVENTS_FAIL:
+      return false;
     default:
       return state;
   }

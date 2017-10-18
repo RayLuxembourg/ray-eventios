@@ -41,7 +41,7 @@ class Dashboard extends Component {
     console.log(events);
     return (
       <div style={{ minHeight: "654px" }}>
-        <Col desktop={12} style={{ padding: "8px" }}>
+        <Col desktop={12} style={{ padding: "8px",marginBottom:"20px" }}>
           <EventFilters>
             <EventFilters.Item
               className={this.selectedFilter("all")}

@@ -41,6 +41,9 @@ describe("actions", () => {
 describe("EventsList reducer", () => {
   const data = normlizeEventList(mockdata);
   const singleEvents = normlizeEvent(singleEventMock);
+  const getEvenst = {
+    type:types.GET_EVENTS
+  }
   const events = {
     type: types.GET_EVENTS_SUCCESS,
     payload: data
@@ -51,6 +54,12 @@ describe("EventsList reducer", () => {
   }
   it("should return the initial state", () => {
     expect(reducer.default(List(), List())).toEqual(List());
+  });
+  it("should return loading true on GET_EVENTS", () => {
+    expect(reducer.default(undefined, getEvenst).get("loading")).toEqual(true);
+  });
+  it("should return loading false on GET_EVENTS_SUCCESS", () => {
+    expect(reducer.default(undefined, events).get("loading")).toEqual(false);
   });
   it("should return the GET_EVENTS_SUCCESS all events", () => {
     expect(reducer.default(undefined, events).get("all")).toEqual(
