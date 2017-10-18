@@ -13,4 +13,4 @@ DeleteEvent.Text = styled.span`
     ${Media.mobile`display:none`}
 
 `;
-export default DeleteEvent;
+export default DeleteEvent; 
