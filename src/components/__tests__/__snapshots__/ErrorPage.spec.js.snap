@@ -20,14 +20,13 @@ ShallowWrapper {
       "children": Array [
         <Headline
           subtitle="Seems like Darth Vader just hits our website and drops it down.
-    Please press the refresh button and everything should be fine again."
-          title="Something went wrong."
+                        Please press the refresh button and everything should be fine again."
+          title="404 Error - page not found."
 />,
         <Button
           color="dark"
->
-          REFRESH
-</Button>,
+          content="REFRESH"
+/>,
       ],
     },
     "ref": null,
@@ -38,8 +37,8 @@ ShallowWrapper {
         "nodeType": "function",
         "props": Object {
           "subtitle": "Seems like Darth Vader just hits our website and drops it down.
-    Please press the refresh button and everything should be fine again.",
-          "title": "Something went wrong.",
+                        Please press the refresh button and everything should be fine again.",
+          "title": "404 Error - page not found.",
         },
         "ref": null,
         "rendered": null,
@@ -50,11 +49,11 @@ ShallowWrapper {
         "key": null,
         "nodeType": "function",
         "props": Object {
-          "children": "REFRESH",
           "color": "dark",
+          "content": "REFRESH",
         },
         "ref": null,
-        "rendered": "REFRESH",
+        "rendered": null,
         "type": [Function],
       },
     ],
@@ -69,14 +68,13 @@ ShallowWrapper {
         "children": Array [
           <Headline
             subtitle="Seems like Darth Vader just hits our website and drops it down.
-    Please press the refresh button and everything should be fine again."
-            title="Something went wrong."
+                        Please press the refresh button and everything should be fine again."
+            title="404 Error - page not found."
 />,
           <Button
             color="dark"
->
-            REFRESH
-</Button>,
+            content="REFRESH"
+/>,
         ],
       },
       "ref": null,
@@ -87,8 +85,8 @@ ShallowWrapper {
           "nodeType": "function",
           "props": Object {
             "subtitle": "Seems like Darth Vader just hits our website and drops it down.
-    Please press the refresh button and everything should be fine again.",
-            "title": "Something went wrong.",
+                        Please press the refresh button and everything should be fine again.",
+            "title": "404 Error - page not found.",
           },
           "ref": null,
           "rendered": null,
@@ -99,11 +97,11 @@ ShallowWrapper {
           "key": null,
           "nodeType": "function",
           "props": Object {
-            "children": "REFRESH",
             "color": "dark",
+            "content": "REFRESH",
           },
           "ref": null,
-          "rendered": "REFRESH",
+          "rendered": null,
           "type": [Function],
         },
       ],
