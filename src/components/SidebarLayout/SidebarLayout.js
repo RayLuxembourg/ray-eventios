@@ -87,7 +87,7 @@ export default ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={matchProps => (
-        <StyledLayout>
+        <StyledLayout >
           <Header>
             <div className="logo">
               <img src={whiteLogo} alt="Eventio" />
@@ -95,7 +95,7 @@ export default ({ component: Component, ...rest }) => {
             </div>
             {accountMsg()}
           </Header>
-          <Col desktop={4}>
+          <Col desktop={4} style={{padding:0}}>
             <Sidebar>
               <Quote>
                 "Great Kid Don't get cocky."
@@ -103,7 +103,7 @@ export default ({ component: Component, ...rest }) => {
               </Quote>
             </Sidebar>
           </Col>
-          <Col className="bg-white" desktop={8} mobile={12}>
+          <Col className="bg-white"  desktop={8} mobile={12} style={{padding:0}}>
             <div className={"content"}>
               <Component {...matchProps} />
             </div>
