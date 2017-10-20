@@ -3,7 +3,7 @@ import {Switch } from "react-router-dom";
 import {Dashboard,Login,Register,Event as EventView,Profile,NewEvent} from "./views"
 import {Restricted} from "./utils";
 import {SidebarLayout} from "./components";
-import {Layout} from "./containers"
+import {Layout} from "./components"
 export default () => {
   return (
     <Switch>

@@ -71,12 +71,6 @@ class EventDetails extends Component {
       />
     );
   }
-  actionButtonHandle() {
-    if (this.isOwner()) {
-    } else {
-      this.props.history.push("/new");
-    }
-  }
   removeAndRedirect() {
     console.log(this.props);
     this.props.deleteEvent(this.props.match.params.id);
@@ -115,7 +109,7 @@ class EventDetails extends Component {
           </Col>
           <ActionButton
             style={{ display: this.isOwner() ? "none" : null }}
-            onClick={this.actionButtonHandle.bind(this)}
+            onClick={() => this.props.history.push("/new")}
           >
             <ActionButton.content src={addIcon} />
           </ActionButton>

@@ -66,7 +66,6 @@ const StyledLayout = styled.div`
   }
 `;
 export default ({ component: Component, ...rest }) => {
-  console.log(rest.path);
   const accountMsg = () => {
     if (rest.path === "/login") {
       return (

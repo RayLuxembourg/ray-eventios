@@ -18,3 +18,4 @@ export { default as ProfileInfo } from "./ProfileInfo/ProfileInfo";
 export { default as EventFilters } from "./EventFilters/EventFilters";
 export { default as GridOptions } from "./GridOptions/GridOptions";
 export { default as DeleteEvent } from "./DeleteEvent/DeleteEvent";
+export { default as Layout } from "./Layout/Layout";

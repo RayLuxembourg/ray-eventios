@@ -1,5 +1,5 @@
 import * as types from "./types";
-import {login} from "./actions";
+import { login } from "./actions";
 import * as reducer from "./reducer";
 import { Map } from "immutable";
 
@@ -9,8 +9,8 @@ describe("actions", () => {
     const expectedAction = {
       type: types.LOGIN,
       payload: user
-    }
-    console.log(expect(login(user)).toEqual(expectedAction))
+    };
+    expect(login(user)).toEqual(expectedAction);
   });
 });
 describe("Login reducer", () => {
