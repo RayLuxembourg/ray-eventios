@@ -94,7 +94,7 @@ class EventDetails extends Component {
 
     if (event && event.id === match.params.id && !loading) {
       return (
-        <div>
+        <div style={{marginTop:"40px"}}>
           <Col className={"event-id"} desktop={12} mobile={12}>
             DETAILS EVENT: #{event.id.toUpperCase()}
             {this.removeEvent()}

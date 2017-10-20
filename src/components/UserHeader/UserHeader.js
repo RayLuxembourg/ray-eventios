@@ -74,12 +74,12 @@ margin-right: 15px;
 }
 
 `;
-const UserHeader = ({user,onClick}) => {
+const UserHeader = ({user,onClick,className}) => {
   if(!user){
     return <div></div>
   }
   return (
-    <UserHeaderStyle onClick={onClick}>
+    <UserHeaderStyle className={className} onClick={onClick}>
       <small className={"user"}>
         {user.firstName} {user.lastName}
       </small>

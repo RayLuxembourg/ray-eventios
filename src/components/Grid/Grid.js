@@ -10,7 +10,8 @@ export const Container = styled.div`
   max-width: 100%;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  // min-height: 100vh;
+  min-height: 600px;
   justify-content: center;
   ${Media.mobile`padding-bottom: 8em;`};
 `;

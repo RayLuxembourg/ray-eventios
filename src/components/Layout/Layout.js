@@ -62,6 +62,9 @@ const StyledLayout = styled.div`
     padding-left: 20px;
     ${Media.mobile`padding-left:8px;margin-top:15px`};
   }
+  .hide {
+    display: none;
+  }
 `;
 class Layout extends React.Component {
   constructor() {
@@ -83,6 +86,14 @@ class Layout extends React.Component {
       );
     }
   };
+  hideUserMen = history => {
+    console.log(history.location.pathname);
+    if (history.location.pathname === "/new") {
+      return "hide";
+    } else {
+      return
+    }
+  };
   toggleMenu() {
     this.setState({ showMenu: !this.state.showMenu });
   }
@@ -97,10 +108,11 @@ class Layout extends React.Component {
         {...rest}
         render={matchProps => (
           <StyledLayout>
-            <Header style={{position:"static",marginTop:"30px"}}>
+            <Header style={{ position: "static", marginTop: "30px" }}>
               {this.backToDashboard(matchProps.history)}
               <img className={"dashboard-logo"} src={blackLogo} alt="" />
               <UserHeader
+                className={this.hideUserMen(matchProps.history)}
                 user={user}
                 onClick={this.toggleMenu.bind(this)}
               />
