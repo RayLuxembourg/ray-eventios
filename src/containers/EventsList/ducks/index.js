@@ -13,6 +13,7 @@ export {
   futureEventsSelector,
   pastEventsSelector,
   allEventsSelector,
-  allEventsIdSelector
+  allEventsIdSelector,
+  loadingSelector
 } from "./selectors";
 export default reducer;

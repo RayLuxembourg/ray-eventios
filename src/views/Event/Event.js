@@ -5,19 +5,21 @@ import {
   Col,
   Event,
   DeleteEvent,
-  ActionButton
+  ActionButton,
+  Spinner
 } from "../../components";
 import {
   getEventsById,
   attendeesSelector,
   eventByIdSelector,
+  loadingSelector,
   deleteEvent,
   attendEvent,
   unAttendEvent
 } from "./ducks";
 import { updateEvent } from "../../containers/EventsList/ducks";
 import EditEvent from "./EditEvent";
-import { deleteIcon, addIcon } from "../../assets";
+import { deleteIcon, addIcon,mainSpinner } from "../../assets";
 class EventDetails extends Component {
   componentDidMount() {
     this.props.getEventsById(this.props.match.params.id);
@@ -88,10 +90,9 @@ class EventDetails extends Component {
     }
   }
   render() {
-    const { match } = this.props;
-    const { event } = this.props;
+    const { match,event,loading } = this.props;
 
-    if (event && event.id === match.params.id) {
+    if (event && event.id === match.params.id && !loading) {
       return (
         <div>
           <Col className={"event-id"} desktop={12} mobile={12}>
@@ -116,12 +117,13 @@ class EventDetails extends Component {
         </div>
       );
     }
-    return <h3>LOADING....</h3>;
+    return <Spinner style={{width:"60px"}} src={mainSpinner} />;
   }
 }
 const mapStateToProps = state => ({
   event: eventByIdSelector(state),
-  attendees: attendeesSelector(state)
+  attendees: attendeesSelector(state),
+  loading:loadingSelector(state)
 });
 export default connect(mapStateToProps, {
   getEventsById,

@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { ProfileInfo, Event, Col, GridOptions } from "../../components";
+import { ProfileInfo, Event, Col, GridOptions,Spinner } from "../../components";
 import {
   attendingEventsSelector,
   ownerEventsSelector,
   allEventsSelector
 } from "./ducks";
 import { EventsList } from "../../containers";
-import { getEvents } from "../../containers/EventsList/ducks";
+import { getEvents, loadingSelector } from "../../containers/EventsList/ducks";
 import styled from "styled-components";
 import { Media } from "../../utils";
-import { gridIcon, listIcon } from "../../assets";
+import { gridIcon, listIcon,mainSpinner } from "../../assets";
 const ProfileStyle = styled.div`
   padding: 10em 0;
   ${Media.mobile`padding:1em 0`};
@@ -43,21 +43,31 @@ class Profile extends Component {
   }
   render() {
     const user = JSON.parse(localStorage.getItem("user"));
-    const { attendingEvents, ownerEvents, events } = this.props;
+    const { attendingEvents, ownerEvents, events, loading } = this.props;
+    if (loading) {
+      return <Spinner style={{ width: "60px" }} src={mainSpinner} />;
+    }
     return (
       <ProfileStyle>
-        <div style={{padding:"0 8px"}}>
-        <ProfileInfo>
-          <ProfileInfo.Profile>
-            {user.firstName[0]} {user.lastName[0]}
-          </ProfileInfo.Profile>
-          <ProfileInfo.Title>
-            {user.firstName} {user.lastName}
-          </ProfileInfo.Title>
-          <ProfileInfo.Sub>{user.email}</ProfileInfo.Sub>
-        </ProfileInfo>
+        <div style={{ padding: "0 8px" }}>
+          <ProfileInfo>
+            <ProfileInfo.Profile>
+              {user.firstName[0]} {user.lastName[0]}
+            </ProfileInfo.Profile>
+            <ProfileInfo.Title>
+              {user.firstName} {user.lastName}
+            </ProfileInfo.Title>
+            <ProfileInfo.Sub>{user.email}</ProfileInfo.Sub>
+          </ProfileInfo>
         </div>
-        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"0 8px"}}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: "0 8px"
+          }}
+        >
           <h3>My Events</h3>
           <GridOptions>
             <GridOptions.Item
@@ -87,6 +97,7 @@ class Profile extends Component {
 const mapStateToProps = state => ({
   attendingEvents: attendingEventsSelector(state),
   ownerEvents: ownerEventsSelector(state),
-  events: allEventsSelector(state)
+  events: allEventsSelector(state),
+  loading: loadingSelector(state)
 });
 export default connect(mapStateToProps, { getEvents })(Profile);

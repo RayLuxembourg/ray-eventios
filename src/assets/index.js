@@ -12,3 +12,4 @@ export const backArrowIcon = `${BASE_URL}/8q8wlDe.png`;
 export const deleteIcon = `${BASE_URL}/ACxB41E.png`;
 export const saveIcon = `${BASE_URL}/MZEIW36.png`;
 export const addIcon = `${BASE_URL}/n1gKi50.png`;
+export const mainSpinner = `${BASE_URL}/bw8akq9.png`;

@@ -5,11 +5,12 @@ import {
   futureEventsSelector,
   pastEventsSelector,
   allEventsSelector,
-  allEventsIdSelector
+  allEventsIdSelector,
+  loadingSelector
 } from "../../containers/EventsList/ducks";
 import { EventsList } from "../../containers";
-import { Col, EventFilters, GridOptions, ActionButton } from "../../components";
-import { gridIcon, listIcon,addIcon } from "../../assets";
+import { Col, EventFilters, GridOptions, ActionButton,Spinner } from "../../components";
+import { gridIcon, listIcon,addIcon,mainSpinner } from "../../assets";
 class Dashboard extends Component {
   get filter() {
     return this.state.filter;
@@ -37,8 +38,11 @@ class Dashboard extends Component {
     return this.state.layout === layout ? "selected" : "";
   }
   render() {
-    const { events } = this.props;
+    const { events,loading } = this.props;
     console.log(events);
+    if(loading){
+      return <Spinner style={{width:"60px"}} src={mainSpinner} />
+    }
     return (
       <div style={{ minHeight: "654px" }}>
         <Col desktop={12} style={{ padding: "8px", marginBottom: "20px" }}>
@@ -96,7 +100,8 @@ const mapStateToProps = state => ({
   events: allEventsSelector(state),
   all: allEventsIdSelector(state),
   future: futureEventsSelector(state),
-  past: pastEventsSelector(state)
+  past: pastEventsSelector(state),
+  loading:loadingSelector(state)
 });
 export default connect(mapStateToProps, {
   getEvents

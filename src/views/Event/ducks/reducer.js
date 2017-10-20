@@ -1,6 +1,8 @@
 import { combineReducers } from "redux-immutable";
 import { Map } from "immutable";
 import {
+  GET_EVENT_BY_ID,
+  GET_EVENT_BY_ID_FAIL,
   GET_EVENT_BY_ID_SUCCESS,
   ATTEND_EVENT_SUCCESS,
   UNATTEND_EVENT_SUCCESS,
@@ -30,8 +32,20 @@ const attendees = (state = Map(), action) => {
       return state;
   }
 };
+const loading = (state = false, action) => {
+  switch (action.type) {
+    case GET_EVENT_BY_ID:
+      return true;
+    case GET_EVENT_BY_ID_SUCCESS:
+    case GET_EVENT_BY_ID_FAIL:
+      return false;
+    default:
+      return state;
+  }
+};
 export default combineReducers({
   event,
-  attendees
+  attendees,
+  loading
 })
 

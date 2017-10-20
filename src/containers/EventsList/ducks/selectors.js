@@ -1,33 +1,35 @@
 import { createSelector } from "reselect";
 import isAfter from "date-fns/is_after";
-const eventListIdsSelector = state =>
+const selectLoading = state => state.get("events").get("loading");
+const selectEventsIds = state =>
   state
     .get("events")
     .get("ids")
     .toArray();
-const eventListSelector = state =>
+const selectAllEvents = state =>
   state
     .get("events")
     .get("all")
     .toObject();
 
 export const futureEventsSelector = createSelector(
-  eventListIdsSelector,
-  eventListSelector,
+  selectEventsIds,
+  selectAllEvents,
   (ids, events) =>
     ids.filter(id => isAfter(events[id].startsAt, new Date().getDate()))
 );
 export const pastEventsSelector = createSelector(
-  eventListIdsSelector,
-  eventListSelector,
+  selectEventsIds,
+  selectAllEvents,
   (ids, events) =>
     ids.filter(id => !isAfter(events[id].startsAt, new Date().getDate()))
 );
 export const allEventsSelector = createSelector(
-  eventListSelector,
+  selectAllEvents,
   events => events
 );
-export const allEventsIdSelector = createSelector(
-  eventListIdsSelector,
-  ids => ids
+export const allEventsIdSelector = createSelector(selectEventsIds, ids => ids);
+export const loadingSelector = createSelector(
+  selectLoading,
+  loading => loading
 );

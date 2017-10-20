@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import Spinner from "../Spinner/Spinner";
+import {spinnerIcon} from "../../assets"
 const ButtonStyle = styled.button`
   all: unset;
   width: ${({ size, color, theme }) => theme.button.size[size].width};
@@ -35,7 +36,7 @@ ButtonStyle.defaultProps = {
 const Button = (props) => {
   const isLoading = () => {
     if (props.loading) {
-      return <Spinner />;
+      return <Spinner src={spinnerIcon} />;
     }
     return props.content;
   };

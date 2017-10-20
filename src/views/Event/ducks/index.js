@@ -15,5 +15,5 @@ export {
   deleteEvent,
   updateEvent
 } from "./actions";
-export { attendeesSelector, eventByIdSelector,eventByIdEditSelector } from "./selectors";
+export { attendeesSelector, eventByIdSelector,eventByIdEditSelector,loadingSelector } from "./selectors";
 export default reducer;
