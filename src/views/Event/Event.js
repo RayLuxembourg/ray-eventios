@@ -1,17 +1,23 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Attendees, Col, Event,DeleteEvent } from "../../components";
+import {
+  Attendees,
+  Col,
+  Event,
+  DeleteEvent,
+  ActionButton
+} from "../../components";
 import {
   getEventsById,
   attendeesSelector,
   eventByIdSelector,
   deleteEvent,
   attendEvent,
-  unAttendEvent,
+  unAttendEvent
 } from "./ducks";
-import {updateEvent} from "../../containers/EventsList/ducks"
+import { updateEvent } from "../../containers/EventsList/ducks";
 import EditEvent from "./EditEvent";
-import { deleteIcon } from "../../assets";
+import { deleteIcon, addIcon } from "../../assets";
 class EventDetails extends Component {
   componentDidMount() {
     this.props.getEventsById(this.props.match.params.id);
@@ -44,10 +50,10 @@ class EventDetails extends Component {
       startsAt: new Date(`${eventValue.date} ${eventValue.time}`).toISOString()
     };
     this.props.updateEvent(this.props.match.params.id, updatedEvent);
-    this.props.history.push("/");    
+    this.props.history.push("/");
   }
   evenInfo(event) {
-    const id = JSON.parse(localStorage.getItem("user")).id;    
+    const id = JSON.parse(localStorage.getItem("user")).id;
     if (this.isOwner()) {
       return (
         <EditEvent
@@ -65,11 +71,18 @@ class EventDetails extends Component {
       />
     );
   }
+  actionButtonHandle() {
+    if (this.isOwner()) {
+    } else {
+      this.props.history.push("/new");
+    }
+  }
   removeAndRedirect() {
     console.log(this.props);
     this.props.deleteEvent(this.props.match.params.id);
     this.props.history.push("/");
   }
+
   removeEvent() {
     if (this.isOwner()) {
       return (
@@ -100,6 +113,12 @@ class EventDetails extends Component {
               {this.mapAttendees(event.attendees)}
             </Attendees>
           </Col>
+          <ActionButton
+            style={{ display: this.isOwner() ? "none" : null }}
+            onClick={this.actionButtonHandle.bind(this)}
+          >
+            <ActionButton.content src={addIcon} />
+          </ActionButton>
         </div>
       );
     }

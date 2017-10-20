@@ -8,8 +8,8 @@ import {
   allEventsIdSelector
 } from "../../containers/EventsList/ducks";
 import { EventsList } from "../../containers";
-import { Col, EventFilters, GridOptions } from "../../components";
-import { gridIcon, listIcon } from "../../assets";
+import { Col, EventFilters, GridOptions, ActionButton } from "../../components";
+import { gridIcon, listIcon,addIcon } from "../../assets";
 class Dashboard extends Component {
   get filter() {
     return this.state.filter;
@@ -41,7 +41,7 @@ class Dashboard extends Component {
     console.log(events);
     return (
       <div style={{ minHeight: "654px" }}>
-        <Col desktop={12} style={{ padding: "8px",marginBottom:"20px" }}>
+        <Col desktop={12} style={{ padding: "8px", marginBottom: "20px" }}>
           <EventFilters>
             <EventFilters.Item
               className={this.selectedFilter("all")}
@@ -84,6 +84,9 @@ class Dashboard extends Component {
           ids={this.props[this.state.filter]}
           layout={this.layout}
         />
+        <ActionButton onClick={() => this.props.history.push("/new")}>
+          <ActionButton.content src={addIcon} />
+        </ActionButton>
       </div>
     );
   }

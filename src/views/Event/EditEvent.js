@@ -1,10 +1,11 @@
 import React from "react";
-import { Input, Button } from "../../components";
+import { Input, ActionButton } from "../../components";
 import styled from "styled-components";
 import { reduxForm, Field } from "redux-form/immutable";
 import isFuture from "date-fns/is_future";
 import { connect } from "react-redux";
 import { eventByIdEditSelector } from "./ducks";
+import {saveIcon} from "../../assets";
 const EditForm = styled.form`
   background: #ffffff;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.11);
@@ -37,12 +38,7 @@ const validate = form => {
   return errors;
 };
 let EditEvent = props => {
-  const {
-    handleSubmit,
-    submitting,
-    loading,
-    saveEdit
-  } = props;
+  const { handleSubmit, saveEdit } = props;
   console.log(props);
   return (
     <EditForm onSubmit={handleSubmit(saveEdit)}>
@@ -61,12 +57,10 @@ let EditEvent = props => {
         component={Input}
         type="number"
       />
-      <Button
-        type={"submit"}
-        content={"UPDATE EVENT"}
-        loading={loading}
-        disabled={submitting}
-      />
+      <ActionButton type={"submit"}>
+        <ActionButton.content src={saveIcon}>
+        </ActionButton.content>
+      </ActionButton>
     </EditForm>
   );
 };

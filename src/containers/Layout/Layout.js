@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { Route } from "react-router-dom";
-import { Header, Container, ActionButton, UserHeader, UserMenu } from "../../components";
+import { Header, Container, UserHeader, UserMenu } from "../../components";
 import { blackLogo, backArrowIcon } from "../../assets";
 import { Link } from "react-router-dom";
 import { Media } from "../../utils";
@@ -111,9 +111,6 @@ class Layout extends React.Component {
             <Container>
               <Component {...matchProps} />
             </Container>
-            <ActionButton onClick={() => matchProps.history.push("/new")}>
-              <ActionButton.content>+</ActionButton.content>
-            </ActionButton>
           </StyledLayout>
         )}
       />

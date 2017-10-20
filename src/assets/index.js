@@ -10,3 +10,5 @@ export const sideBarBg = `${BASE_URL}/hWemyYv.jpg`;
 export const blackLogo = `${BASE_URL}/cYOyg9R.png`;
 export const backArrowIcon = `${BASE_URL}/8q8wlDe.png`;
 export const deleteIcon = `${BASE_URL}/ACxB41E.png`;
+export const saveIcon = `${BASE_URL}/MZEIW36.png`;
+export const addIcon = `${BASE_URL}/n1gKi50.png`;
