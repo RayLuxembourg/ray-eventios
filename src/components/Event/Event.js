@@ -133,7 +133,7 @@ EventGrid.Description = styled.p`
   line-height: 24px;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  // white-space: nowrap;
 `;
 EventGrid.Attendings = styled.div`
   position: absolute;

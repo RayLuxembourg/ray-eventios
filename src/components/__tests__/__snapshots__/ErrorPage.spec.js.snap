@@ -26,6 +26,7 @@ ShallowWrapper {
         <Button
           color="dark"
           content="REFRESH"
+          onClick={[Function]}
 />,
       ],
     },
@@ -51,6 +52,7 @@ ShallowWrapper {
         "props": Object {
           "color": "dark",
           "content": "REFRESH",
+          "onClick": [Function],
         },
         "ref": null,
         "rendered": null,
@@ -74,6 +76,7 @@ ShallowWrapper {
           <Button
             color="dark"
             content="REFRESH"
+            onClick={[Function]}
 />,
         ],
       },
@@ -99,6 +102,7 @@ ShallowWrapper {
           "props": Object {
             "color": "dark",
             "content": "REFRESH",
+            "onClick": [Function],
           },
           "ref": null,
           "rendered": null,

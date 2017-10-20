@@ -7,6 +7,6 @@ const Header = styled.header`
     height:48px;
     padding:0 40px;
     z-index:10;
-${Media.mobile`top:10px`}    
+${Media.mobile`top:10px;padding:0 20px`}    
 `
 export default Header;

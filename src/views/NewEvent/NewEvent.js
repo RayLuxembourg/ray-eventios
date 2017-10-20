@@ -8,19 +8,25 @@ class EventNew extends Component {
 
   handleSubmit = event => {
     const eventValue = event.toJS();
-    console.log(new Date(`${eventValue.date} ${eventValue.time}`).toISOString());
+    console.log(
+      new Date(`${eventValue.date} ${eventValue.time}`).toISOString()
+    );
     const newEvent = {
-      title:eventValue.title,
-      description:eventValue.description,
-      capacity:parseInt(eventValue.capacity),
-      startsAt:new Date(`${eventValue.date} ${eventValue.time}`).toISOString()
-    }
+      title: eventValue.title,
+      description: eventValue.description,
+      capacity: parseInt(eventValue.capacity),
+      startsAt: new Date(`${eventValue.date} ${eventValue.time}`).toISOString()
+    };
     this.props.createEvent(newEvent);
     this.props.history.push("/");
   };
 
   render() {
-    return <NewEventForm newEvent={event => this.handleSubmit(event)} />;
+    return (
+      <div style={{padding:"0 8px"}}>
+        <NewEventForm newEvent={event => this.handleSubmit(event)} />
+      </div>
+    );
   }
 }
 

@@ -97,7 +97,7 @@ class Layout extends React.Component {
         {...rest}
         render={matchProps => (
           <StyledLayout>
-            <Header>
+            <Header style={{position:"static",marginTop:"30px"}}>
               {this.backToDashboard(matchProps.history)}
               <img className={"dashboard-logo"} src={blackLogo} alt="" />
               <UserHeader

@@ -12,7 +12,7 @@ export const Container = styled.div`
   flex-direction: column;
   min-height: 100vh;
   justify-content: center;
-  ${Media.mobile`padding: 5em 0;`};
+  ${Media.mobile`padding-bottom: 8em;`};
 `;
 export const Row = styled.div`
   width: 100%;
