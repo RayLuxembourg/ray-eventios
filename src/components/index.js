@@ -19,3 +19,4 @@ export { default as EventFilters } from "./EventFilters/EventFilters";
 export { default as GridOptions } from "./GridOptions/GridOptions";
 export { default as DeleteEvent } from "./DeleteEvent/DeleteEvent";
 export { default as Layout } from "./Layout/Layout";
+export { default as MobileFilters } from "./MobileFilters/MobileFilters";

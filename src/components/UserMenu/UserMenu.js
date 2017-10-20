@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {Media} from "../../utils";
 const UserMenu = styled.ul`
   position: absolute;
   background: #ffffff;
@@ -11,6 +12,7 @@ const UserMenu = styled.ul`
   display: none;
   z-index: 10;
   width:190px;
+  ${Media.mobile`width:auto;right:0`}
   &:before {
     content: "";
     width: 0;
